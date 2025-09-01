@@ -1,0 +1,141 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+#Container-SelectionProducts{
+    display: grid;
+    align-items: center;
+    margin-top: 225px;
+} 
+
+#Container-SelectionProducts h1{
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #0b14c8;
+}
+
+
+
+#structure-SelectionProducts{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 30px;
+    justify-items: center;
+    gap: 50px;
+    padding: 0 40px;    
+}
+
+.Products {
+    max-width: 300px;
+    width: 100%;
+    border: 3px solid #bebebe;
+    border-radius: 20px;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    transition: all 0.3s ease;
+    margin-bottom: 100px;
+}
+
+
+
+.Products img {
+    width: 100%;
+    height: 200px; 
+    object-fit: contain; 
+    margin: 0 auto
+}
+
+
+
+.Products:hover{
+    opacity: 1;
+    box-shadow: #0b14c8 0px 13px 27px -5px, #0b14c8 0px 8px 16px -8px;
+    transition: 0.9s;
+}
+
+.Products .info-product{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0 10px;
+    gap:20px; 
+}
+
+.info-product p{
+    font-weight: bold;
+    font-size: 1.7rem;
+    
+}
+.info-product label{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.button-buy{
+    margin-top: 10px;
+}
+.button-car{
+    margin-top: 5px;
+}
+
+.buy-product{
+     width: 100%;
+    padding: 10px ;
+    background-color: #0b14c8;
+    color: #fff;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 1.0rem;
+    transition: 0.8s;
+    opacity: .7;
+} 
+.car-product{
+    width: 100%;
+    padding: 10px ;
+    background-color: #959598;
+    color: #0b14c8;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 1.0rem;
+    transition: 0.8s;
+    opacity: .7;
+} 
+
+
+button:hover{
+    opacity: 1;
+    
+}
+
+
+@media (max-width: 1024px) {
+  #structure-SelectionProducts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #structure-SelectionProducts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+

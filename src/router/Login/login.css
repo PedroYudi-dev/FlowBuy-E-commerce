@@ -1,0 +1,143 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #333;
+    font-family: "Montserrat", sans-serif;
+}
+
+html,
+body{  
+    height: auto;
+    min-height: 100vh;
+}
+
+
+html{
+    background: linear-gradient(180deg, rgb(43, 43, 43) 0%, #1702a1 100%);
+}
+
+
+input:focus{
+    outline: none;
+}
+
+#register-container{
+    max-width: 900px;
+    min-height: 80vh;
+    margin: 2rem auto;
+    display: flex;
+    box-shadow: rgba(7, 7, 7, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 65px;
+    overflow: hidden;
+}
+
+#register-banner{
+    background: url("/src/assets/shopping.jpg");
+    background-position: center;
+    background-size: cover;
+    width: 50%;
+}
+
+#banner-layer{
+    background-color: rgba(40, 39, 40, 0.7);
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+#register-banner h1{
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    word-spacing: 50rem;
+}
+
+#register-forms{
+    background-color: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    width: 50%;
+}
+
+
+#register-forms h2{
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: .5rem;    
+}
+
+
+#register-forms p{
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #585656aa;
+    font-size: .9rem;
+}
+
+.form-control{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-control input{
+    padding: 0.8rem 2.5rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.form-control .icon{
+    position: absolute;
+    transform: translateY(50%);
+    margin-left: 10px ;
+    
+}
+
+#button-login{
+    display: flex;
+    justify-content: center;
+}
+
+#other-registration{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    transition: 0.4s;
+    opacity: 0.8;
+    font-size: 1rem;
+    
+}
+
+#other-registration .registration:hover{
+    opacity: 1;
+    color: #0b14c8;
+    font-weight: bold;
+}
+#other-registration .registration-seller:hover{
+    opacity: 1;
+    color: #0b14c8;
+    font-weight: bold;
+}
+
+
+#registration:hover{
+    opacity: 1;
+
+}
+
+#registration{
+    background-color: #0b14c8;
+    border-radius: 2rem;
+    color: #fff;
+    font-weight: bold;
+    opacity: 0.8;
+    padding: 0.9rem ;
+    width: 100%;
+    transition: 0.4s;
+    border: none;
+    font-size: 1rem;
+}

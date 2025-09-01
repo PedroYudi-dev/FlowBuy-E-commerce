@@ -1,0 +1,64 @@
+.carousel-wrapper {
+  width: 100%;
+  position: relative;
+  top: 40px;
+}
+
+.progress-slide-carousel {
+  width: 100%;
+  height: 384px; 
+  
+}
+
+.slide {
+  background-color: #0e0e0e;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide span {
+  font-size: 24px;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ajusta sem distorcer */
+}
+
+/* Barra de progresso */
+.swiper-pagination-progressbar {
+  background: #e5e7eb;
+  height: 6px;
+  border-radius: 6px;
+
+ 
+}
+
+/* Deixar a barra para baixo */
+.carousel-wrapper .swiper-pagination-progressbar{
+  top: auto;
+  bottom: 0;
+}
+
+.progress-slide-carousel .swiper-pagination-progressbar-fill {
+  background: #1702a1;
+  border-radius: 6px;
+}
+
+/* reposividade */
+@media (max-width: 768px) {
+  .progress-slide-carousel {
+    height: 300px; 
+  }
+}
+@media (max-width: 480px) {
+  .progress-slide-carousel {
+    height: 200px; /* Altura ainda menor para celulares */
+    
+  }
+}

@@ -1,0 +1,45 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.container-Terms{
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    background-color: #fff;
+    
+}
+
+#conatiner-TermUse{
+    padding: 30px;
+    margin-bottom: 100px;
+   
+
+    
+}
+#conatiner-TermUse {
+    display: flex;
+   flex-direction: column;
+   align-items: center;
+
+}
+
+
+#conatiner-TermUse p{
+    margin-top: 40px;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+}
+#conatiner-TermUse h1{
+    color: #0b14c8;
+
+}
+
+#conatiner-TermUse img{
+ width: 200px;
+ color: #0b14c8;
+}

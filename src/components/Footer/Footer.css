@@ -1,0 +1,114 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica;
+    box-sizing: border-box;
+}
+
+#container-footer{
+    width: 100%;
+    background-color: #bebebe;
+    max-height: auto ;
+}
+
+#start-footer{
+    display: flex;
+    justify-content: center;
+    align-items:center 
+}
+
+#start-footer img{
+ width: 200px;
+}
+
+#footer{
+    display: flex;
+    justify-content:space-around;
+}
+
+#footer h2{
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 5px;
+}
+
+#footer p{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 5px;
+}
+#footer p:hover{
+    color: #0b14c8;
+    opacity: 1;
+}
+
+
+#footer .network{
+    margin-top: 10px
+}
+#footer .network p{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+
+#social .network-icons{
+    width: 20px;
+    height: 25px;
+}
+
+#contact-inform, .phone,.email,.location{
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    
+}
+
+
+
+#orter-onformation{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#orter-onformation .security{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 5px;
+   margin-bottom: 20px;
+}
+
+#orter-onformation .security p{
+   font-size: 2rem;
+   color: #fff;
+   font-weight: bold;
+   display: flex;
+}
+
+#orter-onformation .lock{
+    width: 35px;
+    height: 35px;
+    
+}
+
+#orter-onformation .cards{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 40px;
+}
+
+#orter-onformation .cards-pay{
+    width: 50px;
+    height: 50px;
+
+}
+
+
+
