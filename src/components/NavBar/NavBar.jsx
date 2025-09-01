@@ -27,6 +27,7 @@ export default function NavBar(){
     }
 
     setLoading(true);
+    const start = Date.now();
     try{
       const response = await api.get(`/api/Produto/search?q=${search}`);
       const data = response.data
@@ -36,7 +37,9 @@ export default function NavBar(){
       console.error("Erro para buscar produtos:", error)
     
   }finally{
-      setLoading(false);
+        const elapsed = Date.now() - start;
+        const remaining = 500 - elapsed; 
+        setTimeout(() => setLoading(false), remaining > 0 ? remaining : 0);;
   }
 }
 
@@ -108,7 +111,7 @@ export default function NavBar(){
           />
           <Search className="icon-home" />
 
-          {loading && <p>Carregando...</p>}
+          {loading && <p id="box-loading">Carregando...</p>}
 
           {products.length > 0 && (
             <ul id="box-search">
@@ -116,7 +119,7 @@ export default function NavBar(){
                 <li
                   key={product.id}
                   className={index === selectedIndex ? "selected" : ""}
-                  ref={(prod) => listProduct.current[index] = prod}
+                  ref={(prod) => (listProduct.current[index] = prod)}
                 >
                   <Link to={`api/Produto/${product.id}/${product.titulo}`}>
                     <Search className="icon-product" />
@@ -129,8 +132,12 @@ export default function NavBar(){
         </div>
 
         <div id="resgistrar">
-          <Link to="/Buyer/Login">Cadastrar</Link>
-          <Link to="/Seller/Login">Cadastrar como Vendedor</Link>
+          <div className="Register">
+            <Link to="/Buyer/Login">Cadastrar</Link>
+          </div>
+          <div className="Register-seller">
+            <Link to="/Seller/Login">Cadastrar como Vendedor</Link>
+          </div>
         </div>
         <div id="car-buy">
           <Tooltip text="Carrinho">
