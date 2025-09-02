@@ -14,6 +14,7 @@ import LoginBuyer from "./router/LoginBuyer/LoginBuyer.jsx"
 import PrivacyPolicy from './components/FooterComponents/PrivacyPolicy/PrivacyPolicy.jsx'
 import TermsUse from './components/FooterComponents/TermsUse/TermsUse.jsx'
 import ExchangeReturnPolicy from './components/FooterComponents/ExchangeReturnPolicy/ExchangeReturnPolicy.jsx'
+import ProductScreen from './router/ProductScreen/index.jsx'
 
 // Aqui colocamos a estrutura do "APP" nas rotas. APP = PAI FILHOS = ROTAS
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/ExchangeReturnPolicy",
         element: <ExchangeReturnPolicy />,
+      },
+      {
+        path: "/Product/:id/:titulo?",
+        element: <ProductScreen />,
       },
     ],
   },

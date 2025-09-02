@@ -121,7 +121,7 @@ export default function NavBar(){
                   className={index === selectedIndex ? "selected" : ""}
                   ref={(prod) => (listProduct.current[index] = prod)}
                 >
-                  <Link to={`api/Produto/${product.id}/${product.titulo}`}>
+                  <Link to={`/Product/${product.id}/${product.titulo}`}>
                     <Search className="icon-product" />
                     {product.titulo}
                   </Link>
