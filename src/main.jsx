@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         element: <ExchangeReturnPolicy />,
       },
       {
-        path: "/Product/:id/:titulo?",
+        path: "/Produto/:id/:titulo?",
         element: <ProductScreen />,
       },
     ],

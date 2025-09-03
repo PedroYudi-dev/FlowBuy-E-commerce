@@ -32,7 +32,7 @@ export default function NavBar(){
       const response = await api.get(`/api/Produto/search?q=${search}`);
       const data = response.data
       setProducts(data)
-      console.log(data)
+      // console.log(data)
     }catch(error){
       console.error("Erro para buscar produtos:", error)
     
@@ -108,6 +108,7 @@ export default function NavBar(){
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             value={query}
+            autoComplete="off"
           />
           <Search className="icon-home" />
 
@@ -121,7 +122,7 @@ export default function NavBar(){
                   className={index === selectedIndex ? "selected" : ""}
                   ref={(prod) => (listProduct.current[index] = prod)}
                 >
-                  <Link to={`/Product/${product.id}/${product.titulo}`}>
+                  <Link to={`/Produto/${product.id}/${product.titulo}`}>
                     <Search className="icon-product" />
                     {product.titulo}
                   </Link>
