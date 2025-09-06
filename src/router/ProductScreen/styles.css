@@ -12,3 +12,8 @@
     background-color: #fff;
 }
 
+#product-screen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

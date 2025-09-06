@@ -10,16 +10,16 @@ import { useEffect, useState } from "react";
 
 export default function SelectionProducts() {
 
-  const [users, setUsers] = useState([])
+  const [produto, setProduto] = useState([])
 
-  const getUsers = async () => {
+  const getProduct = async () => {
     const response = await Api.get("/api/Produto");
-    setUsers(response.data)
+    setProduto(response.data);
     console.log(response)
   };
 
   useEffect(() => {
-    getUsers();
+    getProduct();
   }, []);
   
 
@@ -28,7 +28,7 @@ export default function SelectionProducts() {
     <div id="Container-SelectionProducts">
       <h1>Produtos</h1>
       <div id="structure-SelectionProducts">
-        {users.slice(0, 10).map((product) => (
+        {produto.slice(0, 10).map((product) => (
           <div className="Products" key={product.id}>
             <img src={product.image} alt={product.titulo} />
             <div className="info-product">
