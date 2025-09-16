@@ -2,11 +2,12 @@ import "./style.css"
 import { useParams } from "react-router-dom";
 import api from "../../../Services/Api";
 import { useState, useEffect } from "react";
-import AvaliationProduct from "./Avation/AvaliationProduct";
+import AvaliationProduct from "../Avation/AvaliationProduct";
 
 
 // Icons
 import { Star } from "lucide-react";
+import ButtonCard from "../../Buttons/ButtonCard";
 
 
 
@@ -48,31 +49,40 @@ export default function InfoProduct(){
               <Star color="yellow" />
               <p>R${product.valor}</p>
             </div>
+            <div className="button-cart">
+              <ButtonCard />
+            </div>
           </div>
         </div>
         <div id="detalhe-product-allDescripition">
           <div className="type-descripition">
             <button
-              className={detalies === "overview" ? "activeTab" : ""}
-              onClick={() => setDetalies("overview")}
+              className={detalies === "overview" ? "active" : ""}
+              onClick={() =>
+                setDetalies(detalies === "overview" ? null : "overview")
+              }
             >
               Overview
             </button>
             <button
-              className={detalies === "review" ? "activeTab" : ""}
-              onClick={() => setDetalies("review")}
+              className={detalies === "review" ? "active" : ""}
+              onClick={() =>
+                setDetalies(detalies === "review" ? null : "review")
+              }
             >
               Review
             </button>
             <button
-              className={detalies === "suport" ? "activeTab" : ""}
-              onClick={() => setDetalies("suport")}
+              className={detalies === "suport" ? "active" : ""}
+              onClick={() =>
+                setDetalies(detalies === "suport" ? null : "suport")
+              }
             >
               Suport
             </button>
           </div>
         </div>
-        {detalies && (
+        {detalies ? (
           <div className="tab-content">
             {detalies === "overview" && (
               <div>
@@ -93,6 +103,8 @@ export default function InfoProduct(){
               </div>
             )}
           </div>
+        ) : (
+          ""
         )}
       </div>
     );

@@ -43,10 +43,9 @@ export default function SelectionProducts() {
               <p>R${product.valor}</p>
             </div>
             <div className="button-buy">
-              <button className="buy-product">Comprar</button>
+              <button className="buy-product">Visualizar </button>
             </div>
             <div className="button-car">
-              <button className="car-product">Adicionar ao Carrinho</button>
             </div>
           </div>
         ))}

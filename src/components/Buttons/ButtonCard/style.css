@@ -1,0 +1,15 @@
+.car-product{
+    width: 100%;
+    padding: 10px ;
+    background-color: #959598;
+    color: #0b14c8;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 1.0rem;
+    transition: 0.8s;
+    opacity: .7;
+    margin-top: 3rem;
+} 
+
