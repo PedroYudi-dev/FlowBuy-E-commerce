@@ -5,10 +5,10 @@ import Tooltip from "../../elements/Tooltip/Tooltip";
 
 // states
 import { useEffect, useState, useRef } from "react";
-
+import { useNavigate } from "react-router-dom";
 //Icons
 import { Search, CircleUserRound, ShoppingCart, Import } from "lucide-react";
-import api from "../../Services/Api";
+import { searchProduct } from "../../Services/getProduct/searchGetProduct";
 
 
 
@@ -19,8 +19,10 @@ export default function NavBar(){
   const [loading, setLoading] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
+  const navigate = useNavigate()
+
   const listProduct = useRef([])
-  const getProducts = async (search) => {
+  const getSearchProducts = async (search) => {
     if (!search) {
       setProducts([]);
       return;
@@ -29,10 +31,8 @@ export default function NavBar(){
     setLoading(true);
     const start = Date.now();
     try{
-      const response = await api.get(`/api/Produto/search?q=${search}`);
-      const data = response.data
-      setProducts(data)
-      // console.log(data)
+      const dataSearchProduct = await searchProduct(search);
+      setProducts(dataSearchProduct);
     }catch(error){
       console.error("Erro para buscar produtos:", error)
     
@@ -45,7 +45,7 @@ export default function NavBar(){
 
   useEffect(() =>{
     const delay = setTimeout(() =>{
-      getProducts(query)
+      getSearchProducts(query);
     }, 500)
       return () => clearTimeout(delay)
 }, [query])
@@ -121,11 +121,14 @@ export default function NavBar(){
                   key={product.id}
                   className={index === selectedIndex ? "selected" : ""}
                   ref={(prod) => (listProduct.current[index] = prod)}
-                >
-                  <Link to={`/Produto/${product.id}/${product.titulo}`}>
-                    <Search className="icon-product" />
-                    {product.titulo}
-                  </Link>
+                  onClick={() =>{
+                    navigate(`/Produto/${product.id}/${product.titulo}`);
+                    setQuery("")
+                    setProducts([])
+                  }}
+                  >
+                  <Search className="icon-product"/>
+                  {product.titulo}
                 </li>
               ))}
             </ul>

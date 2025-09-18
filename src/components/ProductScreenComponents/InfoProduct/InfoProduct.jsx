@@ -1,9 +1,10 @@
+// Chamada
+import { getSingleProduct } from "../../../Services/getProduct/singleGetProduct";
+
 import "./style.css"
 import { useParams } from "react-router-dom";
-import api from "../../../Services/Api";
 import { useState, useEffect } from "react";
 import AvaliationProduct from "../Avation/AvaliationProduct";
-
 
 // Icons
 import { Star } from "lucide-react";
@@ -11,23 +12,32 @@ import ButtonCard from "../../Buttons/ButtonCard";
 
 
 
+
 export default function InfoProduct(){
     const {id} = useParams()
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState({})
     const [detalies, setDetalies] = useState()
     // Puxando o produto pelo Id
     useEffect(() =>{
-        const getInfoProduct = async () => {
+        const singleProduct = async () => {
           try {
-            const response = await api.get(`/api/Produto/${id}`);
-            setProduct(response.data);
-            console.log(response.data);
+            const dataSIngleProduct = await getSingleProduct(id)
+            setProduct(dataSIngleProduct);
           } catch (err) {
-            console.log(err, "Erro ao buscar produto");
+            console.log(err, "Erro ao buscar produto um único produto");
           }
         };
-        getInfoProduct();
+        singleProduct();
     }, [id])
+
+
+    const monthValue = Math.ceil(
+      parseFloat(String(product.valor).replace(",", ".")) / 12
+    );
+    const monthValueFormatted = monthValue.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
 
 
     return (
@@ -47,7 +57,27 @@ export default function InfoProduct(){
               <Star color="yellow" />
               <Star color="yellow" />
               <Star color="yellow" />
-              <p>R${product.valor}</p>
+              <p>
+                {product.valor &&
+                  parseFloat(
+                    String(product.valor).replace(",", ".")
+                  ).toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
+              </p>
+              <p
+                style={{
+                  color: "#444",
+                  fontSize: "1rem",
+                  borderBottom: "2px solid #ccc",
+                }}
+              >
+                ou {monthValueFormatted}/mes em 12x
+              </p>
+            </div>
+            <div>
+              <label>Color:</label>
             </div>
             <div className="button-cart">
               <ButtonCard />

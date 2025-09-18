@@ -1,5 +1,8 @@
+// chamada
+import { getProduct } from "../../Services/getProduct/allGetProduct";
+
+
 import "./SelectionProducts.css";
-import Api from "../../Services/Api";
 // icons
 import { Star } from "lucide-react";
 
@@ -12,17 +15,17 @@ export default function SelectionProducts() {
 
   const [produto, setProduto] = useState([])
 
-  const getProduct = async () => {
-    const response = await Api.get("/api/Produto");
-    setProduto(response.data);
-    console.log(response)
-  };
-
-  useEffect(() => {
-    getProduct();
-  }, []);
-  
-
+  useEffect(() =>{
+      const viewProductGet = async () =>{
+        try {
+          const dataProduct = await getProduct();
+          setProduto(dataProduct);
+        } catch (error) {
+          console.error(error, "Não foi possivel mostrar os produtos");
+        }
+    } 
+    viewProductGet()
+  }, [])
 
   return (
     <div id="Container-SelectionProducts">
@@ -40,13 +43,20 @@ export default function SelectionProducts() {
                 <Star color="#f7eb0cff" className="star" />
                 <Star color="#f7eb0cff" className="star" />
               </div>
-              <p>R${product.valor}</p>
+              <p>
+                {product.valor &&
+                  parseFloat(
+                    String(product.valor).replace(",", ".")
+                  ).toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
+              </p>
             </div>
             <div className="button-buy">
               <button className="buy-product">Visualizar </button>
             </div>
-            <div className="button-car">
-            </div>
+            <div className="button-car"></div>
           </div>
         ))}
       </div>
