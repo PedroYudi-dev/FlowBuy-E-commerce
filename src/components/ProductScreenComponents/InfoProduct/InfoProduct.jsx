@@ -9,6 +9,7 @@ import AvaliationProduct from "../Avation/AvaliationProduct";
 // Icons
 import { Star } from "lucide-react";
 import ButtonCard from "../../Buttons/ButtonCard";
+import Variation from "../../Variation";
 
 
 
@@ -51,7 +52,7 @@ export default function InfoProduct(){
               <h1>{product.titulo}</h1>
               {/* <div>
               <AvaliationProduct produtoId={id}/>
-            </div> */}
+              </div> */}
               <Star color="yellow" />
               <Star color="yellow" />
               <Star color="yellow" />
@@ -76,8 +77,8 @@ export default function InfoProduct(){
                 ou {monthValueFormatted}/mes em 12x
               </p>
             </div>
-            <div>
-              <label>Color:</label>
+            <div className="ProductVariation">
+              <Variation/>
             </div>
             <div className="button-cart">
               <ButtonCard />

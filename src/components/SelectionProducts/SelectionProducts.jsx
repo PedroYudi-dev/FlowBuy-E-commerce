@@ -10,10 +10,12 @@ import { Star } from "lucide-react";
 
 // UseState
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SelectionProducts() {
 
   const [produto, setProduto] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() =>{
       const viewProductGet = async () =>{
@@ -54,7 +56,14 @@ export default function SelectionProducts() {
               </p>
             </div>
             <div className="button-buy">
-              <button className="buy-product">Visualizar </button>
+              <button
+                  type="submit" 
+                  className="buy-product"
+                  onClick={() =>{
+                  navigate(`/Produto/${product.id}/${product.titulo}`);
+                }}
+                >Visualizar
+              </button>
             </div>
             <div className="button-car"></div>
           </div>

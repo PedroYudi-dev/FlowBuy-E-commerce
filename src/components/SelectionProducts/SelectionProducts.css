@@ -84,6 +84,10 @@
     margin-top: 10px;
 }
 
+.button-buy button{
+    cursor: pointer;
+}
+
 .buy-product{
      width: 100%;
     padding: 10px ;

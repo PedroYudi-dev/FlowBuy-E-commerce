@@ -6,7 +6,7 @@ export default function ButtonCard(){
       <>
           <button className="car-product">
             Adicionar ao Carrinho
-        </button>
+          </button>
       </>
     );
 } 
