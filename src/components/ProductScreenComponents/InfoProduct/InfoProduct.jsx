@@ -10,6 +10,7 @@ import AvaliationProduct from "../Avation/AvaliationProduct";
 import { Star } from "lucide-react";
 import ButtonCard from "../../Buttons/ButtonCard";
 import Variation from "../../Variation";
+import ServicesTheProduct from "../../ServicesTheProduct";
 
 
 
@@ -82,6 +83,9 @@ export default function InfoProduct(){
             </div>
             <div className="button-cart">
               <ButtonCard />
+            </div>
+            <div className="Services">
+              <ServicesTheProduct/>
             </div>
           </div>
         </div>

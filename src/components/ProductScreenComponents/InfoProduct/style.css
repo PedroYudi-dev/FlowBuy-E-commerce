@@ -93,7 +93,7 @@ text-align: start;
   transition:  0.9s;
   font-size: 1.2rem;
   font-weight: bold;
-  
+  width: 150px;
 }
 
 .type-descripition button:hover {
@@ -124,4 +124,8 @@ text-align: start;
 
 .ProductVariation{
   margin-top: 20px;
+}
+
+.Services{
+  margin-top: 40px;
 }

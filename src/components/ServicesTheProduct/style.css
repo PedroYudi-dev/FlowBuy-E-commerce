@@ -1,0 +1,17 @@
+#Service-container h5 {
+  font-size: 1rem;
+}
+
+#Service-container p{
+    font-size: 0.9rem;
+    color: #8d8c8c;
+}
+
+
+.Services-structure{
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    
+}
+
