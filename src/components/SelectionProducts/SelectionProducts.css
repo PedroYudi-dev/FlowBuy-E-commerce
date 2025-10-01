@@ -6,17 +6,27 @@
 }
 
 
-#Container-SelectionProducts{
+.Container-SelectionProducts{
+    display: grid;
+    align-items: center;
+    margin-top: 225px;
+}
+
+.Container-SelectionProducts-Buyer{
     display: grid;
     align-items: center;
     margin-top: 225px;
 } 
 
-#Container-SelectionProducts h1{
+.Container-SelectionProducts h1{
     text-align: center;
     font-size: 3rem;
     font-weight: bold;
     color: #0b14c8;
+}
+
+.Container-SelectionProducts-Buyer h1{
+    color: #074107;
 }
 
 
@@ -31,6 +41,21 @@
 }
 
 .Products {
+    max-width: 300px;
+    width: 100%;
+    border: 3px solid #bebebe;
+    border-radius: 20px;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    transition: all 0.3s ease;
+    margin-bottom: 100px;
+}
+
+.Products-Buyer {
     max-width: 300px;
     width: 100%;
     border: 3px solid #bebebe;
@@ -60,6 +85,10 @@
     opacity: 1;
     box-shadow: #0b14c8 0px 13px 27px -5px, #0b14c8 0px 8px 16px -8px;
     transition: 0.9s;
+}
+
+.Products-Buyer:hover{
+    box-shadow: #074107 0px 13px 27px -5px, #074107 0px 8px 16px -8px;
 }
 
 .Products .info-product{
@@ -101,7 +130,13 @@
     transition: 0.8s;
     opacity: .7;
 } 
-.car-product{
+
+.buy-product-Buyer{
+    background-color: #074107;
+} 
+
+
+/* .car-product{
     width: 100%;
     padding: 10px ;
     background-color: #959598;
@@ -113,7 +148,7 @@
     font-size: 1.0rem;
     transition: 0.8s;
     opacity: .7;
-} 
+}  */
 
 
 button:hover{

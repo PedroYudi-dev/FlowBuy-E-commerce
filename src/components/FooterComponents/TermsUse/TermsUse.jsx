@@ -1,9 +1,22 @@
 // import
-import { useEffect } from "react";
 import "./TermUse.css";
-
+import clsx from "clsx";
+// state
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function TermsUse() {
+
+  const location = useLocation();
+  const RouterTermsUse = clsx("conatiner-TermUse", {
+    "conatiner-TermUse-Buyer": location.pathname.startsWith("/Buyer")
+  });
+  const RouterColorLogo = location.pathname.startsWith("/Buyer")
+      ? "/src/assets/Logo-verde.png"
+      : "/src/assets/Logo-azul.png";
+
+
+
   useEffect(() => {
     document.documentElement.classList.add("container-Terms");
     return () => document.documentElement.classList.remove("container-Terms");
@@ -11,7 +24,7 @@ export default function TermsUse() {
   return (
     <>
       <div className="container-Terms">
-        <div id="conatiner-TermUse">
+        <div className={RouterTermsUse}>
           <h1>Termos de Uso</h1>
           <p>
             Ao acessar e utilizar o site da FlowBuy, o usuário declara estar de
@@ -39,7 +52,7 @@ export default function TermsUse() {
             regularmente. Em caso de dúvidas ou disputas, fica eleito o foro da
             comarca do domicílio do consumidor para a resolução de conflitos.
           </p>
-          <img src="/src/assets/Logo-azul.png" alt="" />
+          <img src={RouterColorLogo} alt="Logo" />
         </div>
       </div>
     </>

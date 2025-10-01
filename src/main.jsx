@@ -36,7 +36,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Home />,
       },
       {
@@ -53,6 +53,32 @@ const router = createBrowserRouter([
       },
       {
         path: "/Produto/:id/:titulo?",
+        element: <ProductScreen />,
+      },
+    ],
+  },
+  {
+    path: "/Buyer",
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "PrivacyPolicy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "TermsUse",
+        element: <TermsUse />,
+      },
+      {
+        path: "ExchangeReturnPolicy",
+        element: <ExchangeReturnPolicy />,
+      },
+      {
+        path: "Produto/:id/:titulo?",
         element: <ProductScreen />,
       },
     ],

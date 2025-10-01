@@ -1,9 +1,20 @@
 // import
-import { useEffect } from "react";
 import "./ExchangeReturnPolicy.css";
+import clsx from "clsx";
 
+// state
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function ExchangeReturnPolicy() {
+
+  const location = useLocation();
+    const RouterExchangeReturnPolicy = clsx("conatiner-ExchangeReturnPolicy", {
+      "conatiner-ExchangeReturnPolicy-Buyer":
+        location.pathname.startsWith("/Buyer"),
+    });
+    const RouterColorLogo = location.pathname.startsWith("/Buyer") ? "/src/assets/Logo-verde.png" : "/src/assets/Logo-azul.png";
+
   useEffect(() => {
     document.documentElement.classList.add("container-Exchange");
     return () => document.documentElement.classList.remove("container-Exchange");
@@ -11,7 +22,7 @@ export default function ExchangeReturnPolicy() {
   return (
     <>
       <div className="container-Exchange">
-        <div id="conatiner-ExchangeReturnPolicy">
+        <div className={RouterExchangeReturnPolicy}>
           <h1>Política de Privacidade</h1>
           <p>
             A FlowBuy preza pela satisfação de seus clientes e segue as normas
@@ -29,7 +40,7 @@ export default function ExchangeReturnPolicy() {
             enquanto devoluções por arrependimento poderão ter custos de envio
             arcados pelo cliente.
           </p>
-          <img src="/src/assets/Logo-azul.png" alt="" />
+          <img src={RouterColorLogo} alt="Logo" />
         </div>
       </div>
     </>

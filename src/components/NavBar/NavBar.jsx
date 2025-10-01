@@ -1,11 +1,10 @@
 // imports
-import { Link } from "react-router-dom"
 import "./NavBar.css"
 import Tooltip from "../../elements/Tooltip/Tooltip"; 
-
+import clsx from "clsx";
 // states
 import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 //Icons
 import { Search, CircleUserRound, ShoppingCart, Import } from "lucide-react";
 import { searchProduct } from "../../Services/getProduct/searchGetProduct";
@@ -20,6 +19,7 @@ export default function NavBar(){
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const navigate = useNavigate()
+  const location = useLocation()
 
   const listProduct = useRef([])
   const getSearchProducts = async (search) => {
@@ -86,8 +86,15 @@ export default function NavBar(){
      }
    };
 
+  //   Validação para background de acordo a rota
+   const RouterBackgroundter = clsx("container-nav",{
+    //  "container-nav": location.pathname === "/",
+     "container-nav-Buyer": location.pathname.startsWith("/Buyer"),
+   });
+
+  
     return (
-      <nav id="container-nav">
+      <nav className={RouterBackgroundter}>
         <div id="logo-nav">
           <Link to="/">
             <img src="/src/assets/Logo.png" />
@@ -121,13 +128,13 @@ export default function NavBar(){
                   key={product.id}
                   className={index === selectedIndex ? "selected" : ""}
                   ref={(prod) => (listProduct.current[index] = prod)}
-                  onClick={() =>{
+                  onClick={() => {
                     navigate(`/Produto/${product.id}/${product.titulo}`);
-                    setQuery("")
-                    setProducts([])
+                    setQuery("");
+                    setProducts([]);
                   }}
-                  >
-                  <Search className="icon-product"/>
+                >
+                  <Search className="icon-product" />
                   {product.titulo}
                 </li>
               ))}

@@ -1,21 +1,33 @@
 // Chamada
 import { getSingleProduct } from "../../../Services/getProduct/singleGetProduct";
-
+import clsx from "clsx" 
 import "./style.css"
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
 import AvaliationProduct from "../Avation/AvaliationProduct";
+import ServicesTheProduct from "../../ServicesTheProduct";
+import ButtonCard from "../../Buttons/ButtonCard";
+import Variation from "../../Variation";
+
+// state
+import { useParams, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 // Icons
 import { Star } from "lucide-react";
-import ButtonCard from "../../Buttons/ButtonCard";
-import Variation from "../../Variation";
-import ServicesTheProduct from "../../ServicesTheProduct";
+
 
 
 
 
 export default function InfoProduct(){
+
+    const location = useLocation();
+    const RouterDetalheProduct = clsx("detalhe-product",{
+      "detalhe-product-Buyer": location.pathname.startsWith("/Buyer")
+    })
+    const RouterTabContent = clsx("tab-content",{
+      "tab-content-Buyer": location.pathname.startsWith("/Buyer")
+    })
+
     const {id} = useParams()
     const [product, setProduct] = useState({})
     const [detalies, setDetalies] = useState()
@@ -48,7 +60,7 @@ export default function InfoProduct(){
           <div id="detalhe-image">
             {product.image && <img src={product.image} alt={product.titulo} />}
           </div>
-          <div className="detalhe-product">
+          <div className={RouterDetalheProduct}>
             <div>
               <h1>{product.titulo}</h1>
               {/* <div>
@@ -79,13 +91,13 @@ export default function InfoProduct(){
               </p>
             </div>
             <div className="ProductVariation">
-              <Variation/>
+              <Variation />
             </div>
             <div className="button-cart">
               <ButtonCard />
             </div>
             <div className="Services">
-              <ServicesTheProduct/>
+              <ServicesTheProduct />
             </div>
           </div>
         </div>
@@ -118,7 +130,7 @@ export default function InfoProduct(){
           </div>
         </div>
         {detalies ? (
-          <div className="tab-content">
+          <div className={RouterTabContent}>
             {detalies === "overview" && (
               <div>
                 <h2>Sobre o Produto</h2>

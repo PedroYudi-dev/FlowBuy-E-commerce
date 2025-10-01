@@ -13,14 +13,20 @@
     
 }
 
-#conatiner-PrivacyPolicy{
+.conatiner-PrivacyPolicy{
     padding: 30px;
     margin-bottom: 100px;
    
 
     
 }
-#conatiner-PrivacyPolicy {
+.conatiner-PrivacyPolicy {
+    display: flex;
+   flex-direction: column;
+   align-items: center;
+
+}
+.conatiner-PrivacyPolicy-Buyer {
     display: flex;
    flex-direction: column;
    align-items: center;
@@ -28,18 +34,22 @@
 }
 
 
-#conatiner-PrivacyPolicy p{
+.conatiner-PrivacyPolicy p{
     margin-top: 40px;
     font-size: 1.3rem;
     font-weight: bold;
 
 }
-#conatiner-PrivacyPolicy h1{
+.conatiner-PrivacyPolicy h1{
     color: #0b14c8;
 
 }
+.conatiner-PrivacyPolicy-Buyer h1{
+    color: #074107;
 
-#conatiner-PrivacyPolicy img{
- width: 200px;
- color: #0b14c8;
 }
+
+.conatiner-PrivacyPolicy img{
+ width: 200px;
+}
+
