@@ -1,7 +1,6 @@
 // imports
 import "./Footer.css"
 import { Link } from "react-router-dom"
-import clsx from "clsx";
 
 // Icones
 import { Phone, LockKeyhole, Mail, MapPin } from "lucide-react";
@@ -18,27 +17,19 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 // state
-import { useLocation } from "react-router-dom";
 
 
 export default function Footer(){
 
   const locationMarket = "https://www.google.com/maps/place/R.+Amazonas,+734+-+Banzato,+Mar%C3%ADlia+-+SP,+17515-160/data=!4m2!3m1!1s0x94bfd733850c2799:0x4e5c0c6228a2422d?sa=X&ved=1t:242&ictx=111&cshid=1756303824088467"
-
-  const location = useLocation();
-  const RouterFooter = clsx("footer", {
-    "footer-Buyer": location.pathname.startsWith("/Buyer"),
-  });
-
-  const RouterIcons = location.pathname.startsWith("/Buyer") ? "#074107" : "#0b14c8";
-
+  
     return (
       <>
         <div id="container-footer">
           <div id="start-footer">
             <img src="/src/assets/Logo.png" alt="" />
           </div>
-          <div className={RouterFooter}>
+          <div id="footer">
             <div className="on">
               <h2>Sobre o Site</h2>
               <Link to="/PrivacyPolicy">
@@ -61,15 +52,15 @@ export default function Footer(){
               <div className="contact-inform">
                 <h2>Contato</h2>
                 <div className="phone">
-                  <Phone color={RouterIcons} />
+                  <Phone color="#0b14c8" />
                   <p>(14) 3458-7478 - Atendimento das 8h até 18h </p>
                 </div>
                 <div className="email">
-                  <Mail color={RouterIcons} />
+                  <Mail color="#0b14c8" />
                   <p>Flow@FlowBuy.com</p>
                 </div>
                 <div className="location">
-                  <MapPin color={RouterIcons} />
+                  <MapPin color="#0b14c8" />
                   <Link to={locationMarket} target="_blank">
                     <p>Rua Amazonas 734 Marília/SP</p>
                   </Link>
@@ -115,7 +106,7 @@ export default function Footer(){
           <div id="orter-onformation">
             <div className="security">
               <p>
-                <LockKeyhole className="lock" color={RouterIcons} />
+                <LockKeyhole className="lock" color="#0b14c8" />
                 Site Seguro
               </p>
               <p>Seus Dados estão Protegidos conforme a LGPD</p>

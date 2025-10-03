@@ -21,44 +21,34 @@
  width: 200px;
 }
 
-.footer{
+#footer{
     display: flex;
     justify-content:space-around;
 }
 
-.footer-Buyer{
-    display: flex;
-    justify-content:space-around;
-}
-
-.footer h2{
+#footer h2{
     color: #fff;
     font-size: 2rem;
     font-weight: bold;
     padding: 5px;
 }
 
-.footer p{
+#footer p{
     color: #fff;
     font-size: 1.2rem;
     font-weight: bold;
     padding: 5px;
 }
-.footer p:hover{
+#footer p:hover{
     color: #0b14c8;
     opacity: 1;
 }
 
-.footer-Buyer p:hover{
-    color: #074107;
-    opacity: 1;
-}
 
-
-.footer .network{
+#footer .network{
     margin-top: 10px
 }
-.footer .network p{
+#footer .network p{
     display: flex;
     align-items: center;
     gap: 5px;

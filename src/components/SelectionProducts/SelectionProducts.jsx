@@ -1,7 +1,6 @@
 // chamada
 import { getProduct } from "../../Services/getProduct/allGetProduct"
 import "./SelectionProducts.css";
-import clsx from "clsx";
 
 // icons
 import { Star } from "lucide-react";
@@ -10,22 +9,9 @@ import { Star } from "lucide-react";
 
 // UseState
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SelectionProducts() {
-
-  const location = useLocation();
-  const RouterContainerProduct = clsx("Container-SelectionProducts",{
-    "Container-SelectionProducts-Buyer": location.pathname.startsWith("/Buyer")
-  })
-
-  const RouterProduct = clsx("Products", {
-    "Products-Buyer": location.pathname.startsWith("/Buyer")
-  });
-
-  const RouterButtonBuyerProduct = clsx("buy-product",{
-    "buy-product-Buyer": location.pathname.startsWith("/Buyer")
-  })
 
   const [produto, setProduto] = useState([])
   const navigate = useNavigate()
@@ -43,11 +29,11 @@ export default function SelectionProducts() {
   }, [])
 
   return (
-    <div className={RouterContainerProduct}>
+    <div id="Container-SelectionProducts">
       <h1>Produtos</h1>
       <div id="structure-SelectionProducts">
         {produto.slice(0, 10).map((product) => (
-          <div className={RouterProduct} key={product.id}>
+          <div className="Products" key={product.id}>
             <img src={product.image} alt={product.titulo} />
             <div className="info-product">
               <label htmlFor="">{product.titulo}</label>
@@ -71,7 +57,7 @@ export default function SelectionProducts() {
             <div className="button-buy">
               <button
                 type="submit"
-                className={RouterButtonBuyerProduct}
+                className="buy-product"
                 onClick={() => {
                   navigate(`/Produto/${product.id}/${product.titulo}`);
                 }}

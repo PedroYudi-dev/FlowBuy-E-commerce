@@ -13,39 +13,28 @@
     
 }
 
-.conatiner-TermUse{
+#conatiner-TermUse{
     padding: 30px;
     margin-bottom: 100px;
 }
 
-.conatiner-TermUse {
-    display: flex;
-   flex-direction: column;
-   align-items: center;
-}
-.conatiner-TermUse-Buyer {
+#conatiner-TermUse {
     display: flex;
    flex-direction: column;
    align-items: center;
 }
 
-
-.conatiner-TermUse p{
+#conatiner-TermUse p{
     margin-top: 40px;
     font-size: 1.3rem;
     font-weight: bold;
 
 }
-.conatiner-TermUse h1{
+#conatiner-TermUse h1{
     color: #0b14c8;
 
 }
 
-.conatiner-TermUse-Buyer h1{
-    color: #074107;
-
-}
-
-.conatiner-TermUse img{
+#conatiner-TermUse img{
  width: 200px;
 }

@@ -1,6 +1,5 @@
 // Chamada
 import { getSingleProduct } from "../../../Services/getProduct/singleGetProduct";
-import clsx from "clsx" 
 import "./style.css"
 import AvaliationProduct from "../Avation/AvaliationProduct";
 import ServicesTheProduct from "../../ServicesTheProduct";
@@ -8,7 +7,7 @@ import ButtonCard from "../../Buttons/ButtonCard";
 import Variation from "../../Variation";
 
 // state
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // Icons
@@ -19,14 +18,6 @@ import { Star } from "lucide-react";
 
 
 export default function InfoProduct(){
-
-    const location = useLocation();
-    const RouterDetalheProduct = clsx("detalhe-product",{
-      "detalhe-product-Buyer": location.pathname.startsWith("/Buyer")
-    })
-    const RouterTabContent = clsx("tab-content",{
-      "tab-content-Buyer": location.pathname.startsWith("/Buyer")
-    })
 
     const {id} = useParams()
     const [product, setProduct] = useState({})
@@ -60,7 +51,7 @@ export default function InfoProduct(){
           <div id="detalhe-image">
             {product.image && <img src={product.image} alt={product.titulo} />}
           </div>
-          <div className={RouterDetalheProduct}>
+          <div className="detalhe-product">
             <div>
               <h1>{product.titulo}</h1>
               {/* <div>
@@ -130,7 +121,7 @@ export default function InfoProduct(){
           </div>
         </div>
         {detalies ? (
-          <div className={RouterTabContent}>
+          <div className="tab-content">
             {detalies === "overview" && (
               <div>
                 <h2>Sobre o Produto</h2>

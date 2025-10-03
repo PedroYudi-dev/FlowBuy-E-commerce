@@ -13,43 +13,29 @@
     
 }
 
-.conatiner-ExchangeReturnPolicy{
+#conatiner-ExchangeReturnPolicy{
     padding: 30px;
     margin-bottom: 100px;
 }
-.conatiner-ExchangeReturnPolicy {
-    display: flex;
-   flex-direction: column;
-   align-items: center;
-
-}
-.conatiner-ExchangeReturnPolicy-Buyer{
+#conatiner-ExchangeReturnPolicy {
     display: flex;
    flex-direction: column;
    align-items: center;
 
 }
 
-
-.conatiner-ExchangeReturnPolicy p{
+#conatiner-ExchangeReturnPolicy p{
     margin-top: 40px;
     font-size: 1.3rem;
     font-weight: bold;
 
 }
-.conatiner-ExchangeReturnPolicy h1{
+#conatiner-ExchangeReturnPolicy h1{
     color: #0b14c8;
 }
-.conatiner-ExchangeReturnPolicy-Buyer h1{
-    color: #074107;
-}
 
-.conatiner-ExchangeReturnPolicy img{
+#conatiner-ExchangeReturnPolicy img{
  width: 200px;
  color: #0b14c8;
 }
 
-.conatiner-ExchangeReturnPolicy-Buyer img{
- width: 200px;
- color: #0b14c8;
-}

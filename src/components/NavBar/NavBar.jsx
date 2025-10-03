@@ -1,10 +1,9 @@
 // imports
 import "./NavBar.css"
 import Tooltip from "../../elements/Tooltip/Tooltip"; 
-import clsx from "clsx";
 // states
 import { useEffect, useState, useRef } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 //Icons
 import { Search, CircleUserRound, ShoppingCart, Import } from "lucide-react";
 import { searchProduct } from "../../Services/getProduct/searchGetProduct";
@@ -19,7 +18,6 @@ export default function NavBar(){
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const navigate = useNavigate()
-  const location = useLocation()
 
   const listProduct = useRef([])
   const getSearchProducts = async (search) => {
@@ -86,17 +84,13 @@ export default function NavBar(){
      }
    };
 
-  //   Validação para background de acordo a rota
-   const RouterBackgroundter = clsx("container-nav",{
-    //  "container-nav": location.pathname === "/",
-     "container-nav-Buyer": location.pathname.startsWith("/Buyer"),
-   });
 
-  
+    const backPageHome = location.pathname.startsWith("/Buyer") ? "/Buyer" : "/";
+
     return (
-      <nav className={RouterBackgroundter}>
+      <nav className="container-nav">
         <div id="logo-nav">
-          <Link to="/">
+          <Link to={backPageHome}>
             <img src="/src/assets/Logo.png" />
           </Link>
         </div>

@@ -21,9 +21,6 @@
   opacity: 0;
   transition:  0.5s;
 }
-.tooltip-text-Buyer {
-  color: #074107;
-}
 
 .tooltip-container:hover .tooltip-text {
   visibility: visible;

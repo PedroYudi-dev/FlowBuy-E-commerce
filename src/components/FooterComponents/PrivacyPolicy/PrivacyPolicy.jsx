@@ -1,18 +1,10 @@
 // import
 import "./PrivacyPolicy.css";
-import clsx from "clsx";
 
 // state
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 export default function PrivacyPolicy(){
-
-  const location = useLocation();
-  const RouterPrivacyPolicy = clsx("conatiner-PrivacyPolicy",{
-    "conatiner-PrivacyPolicy-Buyer": location.pathname.startsWith("/Buyer")
-    })
-  const RouterColorLogo = location.pathname.startsWith("/Buyer") ? "/src/assets/Logo-verde.png" : "/src/assets/Logo-azul.png";
 
   useEffect(() => {
     document.documentElement.classList.add("conatiner-policy")
@@ -21,7 +13,7 @@ export default function PrivacyPolicy(){
     return (
       <>
         <div className="container-policy">
-          <div className={RouterPrivacyPolicy}>
+          <div id="conatiner-PrivacyPolicy">
             <h1>Política de Privacidade</h1>
             <p>
               Na FlowBuy a sua privacidade é prioridade. Coletamos apenas as
@@ -41,9 +33,7 @@ export default function PrivacyPolicy(){
               ou solicitações, entre em contato pelo e-mail
               privacidade@flowbuy.com.br .
             </p>
-            <img
-              src={RouterColorLogo} alt="Logo"
-            />
+            <img src="/src/assets/Logo-azul.png" alt="Logo" />
           </div>
         </div>
       </>

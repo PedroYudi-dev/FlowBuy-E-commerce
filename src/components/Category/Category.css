@@ -12,21 +12,12 @@
     margin-top: 180px;
 } 
 
-.Container-Category-Buyer{
-    display: grid;
-    align-items: center;
-    margin-top: 180px;
-} 
 
 .Container-Category h1{
     text-align: center;
     font-size: 3rem;
     font-weight: bold;
     color: #0b14c8;
-}
-
-.Container-Category-Buyer h1{
-    color: #074107;
 }
 
 
@@ -67,16 +58,10 @@
     font-size: 1.6rem;
     padding: 10px;
 }
-.Category-Buyer label {
-    color: #074107;
-    
-}
+
 
 .Category:hover{
     opacity: 1;
     box-shadow: #0b14c8 0px 13px 27px -5px, #0b14c8 0px 8px 16px -8px;
     transition: 0.9s;
-}
-.Category-Buyer:hover{
-    box-shadow: #074107 0px 13px 27px -5px, #074107 0px 8px 16px -8px;
 }

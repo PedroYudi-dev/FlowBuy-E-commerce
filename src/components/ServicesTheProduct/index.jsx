@@ -2,15 +2,11 @@
 import "./style.css";
 
 // state
-import { useLocation } from "react-router-dom";
 
 // Icons
 import { RotateCcw, Shield, Truck } from "lucide-react"
 
 export default function ServicesTheProduct(){
-
-  const location = useLocation();
-  const RouterIconsService = location.pathname.startsWith("/Buyer") ? "#074107" : "#0b14c8"
 
     const addBusinessDays = (date, days) => {
         const newDate = new Date(date)
@@ -41,7 +37,7 @@ export default function ServicesTheProduct(){
     return (
       <div id="Service-container">
         <div className="Services-structure">
-          <Truck color={RouterIconsService} />
+          <Truck color="#0b14c8" />
           <div>
             <h5>Frete grátis</h5>
             <p>
@@ -50,14 +46,14 @@ export default function ServicesTheProduct(){
           </div>
         </div>
         <div className="Services-structure">
-          <Shield color={RouterIconsService} />
+          <Shield color="#0b14c8" />
           <div>
             <h5>Suporte FlowBuy® disponível</h5>
             <p>Ajuda especializada quando você precisar</p>
           </div>
         </div>
         <div className="Services-structure">
-          <RotateCcw color={RouterIconsService} />
+          <RotateCcw color="#0b14c8" />
           <div>
             <h5>Política de devolução de 15 dias</h5>
             <p>Devolução ou troca em até 15 dias</p>
