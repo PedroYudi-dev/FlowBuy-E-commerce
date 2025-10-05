@@ -7,7 +7,7 @@
 
 #container-footer{
     width: 100%;
-    background-color: #bebebe;
+    background-color: #0b14c8;
     max-height: auto ;
 }
 
@@ -36,11 +36,11 @@
 #footer p{
     color: #fff;
     font-size: 1.2rem;
-    font-weight: bold;
     padding: 5px;
+    text-decoration: none;
 }
 #footer p:hover{
-    color: #0b14c8;
+    color: #bebebe;
     opacity: 1;
 }
 
@@ -59,6 +59,7 @@
 #social .network-icons{
     width: 20px;
     height: 25px;
+    color: #bebebe !important;
 }
 
 #contact-inform, .phone,.email,.location{
@@ -100,15 +101,15 @@
 
 #orter-onformation .cards{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-bottom: 40px;
 }
 
-#orter-onformation .cards-pay{
+/* #orter-onformation .cards-pay{
     width: 50px;
     height: 50px;
-
-}
+    
+} */
 
 
 
