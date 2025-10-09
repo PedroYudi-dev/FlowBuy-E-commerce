@@ -7,13 +7,13 @@
 
 
 .container-nav{
-    background-color: #1702a1;
+    background-color: #0b14c8;
     width: 100%;
     max-height: 150px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-  }
+}
 
 
 #logo-nav img{

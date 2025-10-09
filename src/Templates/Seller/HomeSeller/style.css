@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.container-home-seller {
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+
+#structure-home-seller{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px); /* subtrai a altura aproximada da navbar */
+  padding: 40px 
+}
+
+#empty-product{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+#empty-product .icon-Pack{
+   width: 50px;
+   height: 50px;
+}
+
+#empty-product h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+#empty-product p {
+  max-width: 400px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.icon-box {
+  background-color: #cecece;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

@@ -1,8 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
-
+import App from './layouts/App.jsx'
+import AppSeller from './layouts/AppSeller.jsx'
 // Rota
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 
@@ -15,6 +15,7 @@ import PrivacyPolicy from './components/FooterComponents/PrivacyPolicy/PrivacyPo
 import TermsUse from './components/FooterComponents/TermsUse/TermsUse.jsx'
 import ExchangeReturnPolicy from './components/FooterComponents/ExchangeReturnPolicy/ExchangeReturnPolicy.jsx'
 import ProductScreen from './router/ProductScreen/index.jsx'
+import HomeSeller from './Templates/Seller/HomeSeller/index.jsx'
 
 // Aqui colocamos a estrutura do "APP" nas rotas. APP = PAI FILHOS = ROTAS
 const router = createBrowserRouter([
@@ -80,6 +81,16 @@ const router = createBrowserRouter([
       {
         path: "Produto/:id/:titulo?",
         element: <ProductScreen />,
+      },
+    ],
+  },
+  {
+    path: "/Seller",
+    element: <AppSeller />,
+    children: [
+      {
+        index: true,
+        element: <HomeSeller/>,
       },
     ],
   },

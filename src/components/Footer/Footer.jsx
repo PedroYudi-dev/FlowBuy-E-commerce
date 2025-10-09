@@ -1,10 +1,9 @@
 // imports
 import "./Footer.css"
 import { Link } from "react-router-dom"
-
+import clsx from "clsx";
 // Icones
-import { Phone, LockKeyhole, Mail, MapPin, FacebookIcon, Instagram, LinkedinIcon, Twitter } from "lucide-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Phone, LockKeyhole, Mail, MapPin, FacebookIcon, Instagram, LinkedinIcon, Twitter, Container } from "lucide-react";
 import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
@@ -14,26 +13,29 @@ import PaypalCard from "../../elements/Cards/IconPayPall";
 import PixLogo from "../../elements/Cards/IconPix";
 
 // state
-
+import { useLocation } from "react-router-dom";
 
 export default function Footer(){
 
   const locationMarket = "https://www.google.com/maps/place/R.+Amazonas,+734+-+Banzato,+Mar%C3%ADlia+-+SP,+17515-160/data=!4m2!3m1!1s0x94bfd733850c2799:0x4e5c0c6228a2422d?sa=X&ved=1t:242&ictx=111&cshid=1756303824088467"
 
+  const location = useLocation();
 
-  const IconVisa = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width="100" height="60">
-  <text x="0" y="45" font-family="Arial, sans-serif" font-size="50" fill="white">VISA</text>
-</svg>
-  const IconMastercard = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width="100" height="60">
-  <circle cx="35" cy="30" r="20" fill="white" opacity="0.8"/>
-  <circle cx="65" cy="30" r="20" fill="white" opacity="0.8"/>
-</svg>
+  const RouterFotterSeller = clsx("container-footer",  {
+    "container-footer-seller": location.pathname.startsWith("/Seller"),
+  });
+
+  const RouterImageFotterSeller = location.pathname.startsWith("/Seller")
+    ? "/src/assets/LogoSeller_1.1.png"
+    : "/src/assets/Logo.png";
+    
+  
 
     return (
       <>
-        <div id="container-footer">
+        <div className={RouterFotterSeller}>
           <div id="start-footer">
-            <img src="/src/assets/Logo.png" alt="" />
+            <img src={RouterImageFotterSeller} alt="" />
           </div>
           <div id="footer">
             <div className="on">

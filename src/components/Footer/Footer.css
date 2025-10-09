@@ -5,10 +5,14 @@
     box-sizing: border-box;
 }
 
-#container-footer{
+.container-footer{
     width: 100%;
     background-color: #0b14c8;
     max-height: auto ;
+}
+.container-footer-seller{
+    background-color: #423524;
+    
 }
 
 #start-footer{
