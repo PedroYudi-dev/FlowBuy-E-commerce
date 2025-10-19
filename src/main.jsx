@@ -16,6 +16,7 @@ import TermsUse from './components/FooterComponents/TermsUse/TermsUse.jsx'
 import ExchangeReturnPolicy from './components/FooterComponents/ExchangeReturnPolicy/ExchangeReturnPolicy.jsx'
 import ProductScreen from './router/ProductScreen/index.jsx'
 import HomeSeller from './Templates/Seller/HomeSeller/index.jsx'
+import RegisterProduct from './Templates/Seller/RegisterProduct/index.jsx'
 
 // Aqui colocamos a estrutura do "APP" nas rotas. APP = PAI FILHOS = ROTAS
 const router = createBrowserRouter([
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomeSeller/>,
+      },
+      {
+        path:"registerProduct",
+        element: <RegisterProduct/>
       },
     ],
   },

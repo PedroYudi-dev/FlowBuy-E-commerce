@@ -1,4 +1,5 @@
 // import
+import { Link } from "react-router-dom";
 import "./style.css";
 
 // state
@@ -6,7 +7,9 @@ import "./style.css";
 export default function ButtonCard() {
   return (
     <>
-      <button className="Add-product">Cadastrar Produto</button>
+      <button className="Add-product">
+        <Link to="registerProduct">Cadastrar Produto</Link>
+      </button>
     </>
   );
 }

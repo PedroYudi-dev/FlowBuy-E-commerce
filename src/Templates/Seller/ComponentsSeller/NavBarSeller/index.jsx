@@ -27,8 +27,8 @@ export default function NavBarSeller() {
           </Link>
         </div>
         <div className="attributes">
-          <Link>
-            <Boxes  color="#fff" className="icon-Products" />
+          <Link to="registerProduct">
+            <Boxes color="#fff" className="icon-Products" />
             <p>Cadastrar Produto</p>
           </Link>
         </div>
@@ -39,7 +39,7 @@ export default function NavBarSeller() {
         </div>
         <div>
           <h3>Painel do Vendedor</h3>
-          <p>Gerencie seus Produtos</p>  
+          <p>Gerencie seus Produtos</p>
         </div>
       </div>
     </nav>

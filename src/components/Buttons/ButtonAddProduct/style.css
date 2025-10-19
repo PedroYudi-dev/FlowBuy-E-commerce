@@ -1,8 +1,7 @@
-.Add-product{
+.Add-product {
     width: 80%;
     padding: 10px ;
     background-color: #423524;
-    color: #fff;
     justify-content: center;
     border-radius: 10px;
     border: none;
@@ -10,4 +9,11 @@
     font-size: 1.0rem;
     transition: 0.8s;
     opacity: .8;
+    text-align: center;
+}
+
+.Add-product a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
 }
