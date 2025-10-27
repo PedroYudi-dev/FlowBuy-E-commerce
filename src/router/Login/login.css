@@ -88,11 +88,12 @@ input:focus{
     padding: 0.8rem 2.5rem;
     border-radius: 20px;
     margin-bottom: 1.5rem;
+    border: 2px solid #0b14c8;
 }
 
 .form-control .icon{
     position: absolute;
-    transform: translateY(50%);
+    transform: translateY(80%);
     margin-left: 10px ;
     
 }
@@ -129,6 +130,12 @@ input:focus{
 
 }
 
+#registration p {
+   color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px -10px;
+}
 #registration{
     background-color: #0b14c8;
     border-radius: 2rem;

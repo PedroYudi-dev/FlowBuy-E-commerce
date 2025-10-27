@@ -13,8 +13,8 @@ export default function BasicInformation(){
 
       if(!nameValue.trim()){
         setNameError("O nome do Produto é Obrigatório")
-      }else if(nameValue.length <= 3){
-        setNameError("O nome deve ter pelo menos 3 caracteres.")
+      }else if(nameValue.length >= 3){
+        setNameError("O nome do produto deve ter pelo menos 3 caracteres.")
       }else if(nameValue.length >= 100){
         setNameError("O nome não pode ter mais de 100 caracteres.")
       }else if(!/^[a-zA-Z0-9\s\-()]+$/.test(nameValue)){

@@ -81,6 +81,7 @@ input:focus{
     margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 
@@ -88,11 +89,12 @@ input:focus{
     padding: 0.8rem 2.5rem;
     border-radius: 20px;
     margin-bottom: 1.5rem;
+    border: 2px solid #074107;
 }
 
 .form-control-buyer .icon{
     position: absolute;
-    transform: translateY(50%);
+    transform: translateY(80%);
     margin-left: 10px ;
     
 }
@@ -107,6 +109,12 @@ input:focus{
 
 }
 
+#registration-buyer p{
+   color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px -10px;
+}
 #registration-buyer{
     background-color: #074107;
     border-radius: 2rem;

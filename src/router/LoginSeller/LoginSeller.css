@@ -81,18 +81,27 @@ input:focus{
     margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 
 .form-control-seller input{
-    padding: 0.8rem 2.5rem;
+    padding: 0.8rem  2.5rem; 
     border-radius: 20px;
     margin-bottom: 1.5rem;
+    border: 2px solid #423524;
+}
+
+.form-control-seller .error-text-below {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: -1rem;
+  margin-left: 2.5rem; 
 }
 
 .form-control-seller .icon{
     position: absolute;
-    transform: translateY(50%);
+    transform: translateY(80%);
     margin-left: 10px ;
     
 }
@@ -107,6 +116,12 @@ input:focus{
 
 }
 
+#registration-seller p{
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px -10px;
+}
 #registration-seller{
     background-color: #423524;
     border-radius: 2rem;
