@@ -2,7 +2,7 @@
 import { useState } from "react";
 import "./style.css"
 
-export default function StockProduct(){
+export default function StockProduct({onCreateStock}) {
     
     const [stock, setStock] = useState("")
     const [error, setError] = useState("")
@@ -21,6 +21,7 @@ export default function StockProduct(){
         }
 
         setStock(e.target.value);
+        onCreateStock({ quantidadeInicial: value });
     }
 
     return (

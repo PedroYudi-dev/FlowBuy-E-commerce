@@ -1,21 +1,23 @@
 import api from "../Api_Ecommerce"
 
 
-export const validationLogin = async (data) =>{
+export const validationLogin = async (body) =>{
     try{
-        const response = await api.post(`api/Auth/Login`, data)
-        if(response.status === 200 || response.status === 201){
-            console.log("Deu certo o Login")
-            return response.data
-        }else{
-            (console.log("Houve um problema com o login"), response.status)
-            return response.data
+        const response = await api.post(`api/Auth/Login`, body)
+        const data = response.data
+        sessionStorage.setItem("Seller", JSON.stringify(data));
+
+        if(data.FornecedorId){
+            sessionStorage.setItem("fornecedorId", data.FornecedorId);
         }
+
+        if(data.clienteId){
+            sessionStorage.setItem("clienteId", data.clienteId);
+        }
+        console.log("Login realizado com sucesso:", data);
+        return data;
     }catch(error){
-            console.error(
-            "Erro ao fazer o login:",
-            error.response?.data || error.message
-            );
-            return null;
+        const mensage = error.response?.data?.message || "Erro desconhecido";
+            console.error("Erro ao fazer o Login:", mensage);
     }
 }

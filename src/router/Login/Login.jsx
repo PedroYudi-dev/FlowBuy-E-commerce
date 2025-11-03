@@ -31,13 +31,15 @@ export default function Login(){
       });
 
       if(dataLogin.role === "Seller"){
+        const sellerId = sessionStorage.getItem("sellerId");
+        console.log("ID do seller:", sellerId);
         navigate("/Seller")
         alert("Bem vindo Vendedor")
-      }else if(dataLogin.role === "Buyer"){
+      }else if (dataLogin.role === "Buyer") {
         navigate("/Buyer");
-        alert("Bem vindo Comprador")
-      }else{
-        alert("Infelizmente você não pode fazer o login")
+        alert("Bem vindo Comprador");
+      } else {
+        alert("Infelizmente você não pode fazer o login");
       }
     }catch(error){
       alert("Não foi possivel acessar o seu login", error)

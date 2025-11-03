@@ -8,6 +8,8 @@ import ImageProduct from "../ComponentsSeller/IamgeProduct";
 import PriceProduct from "../ComponentsSeller/PriceProduct";
 import StockProduct from "../ComponentsSeller/StockProduct";
 import ButtonCreateProduct from "../../../components/Buttons/ButtonCreateProduct";
+import { CreateProduct } from "../../../Services/Services_Ecommerce/Post/postCreateProduct";
+import useAuth from "../../../hooks/UseAuth";
 
 export default function RegisterProduct() {
 
@@ -15,34 +17,57 @@ export default function RegisterProduct() {
     const [priceProduct, setPriceProduct] = useState({})
     const [basicInfoProduct, setBasicInfoProduct] = useState({});
     const [stockProduct, setStockProduct] = useState({});
+    const {seller} = useAuth()
 
     useEffect(() =>{
         document.documentElement.classList.add("container-register-product");
         return () => document.documentElement.classList.remove("container-register-product")
     })
 
-    const handleImageChange = (images) => {
+    const infoImageChange = (images) => {
       setProductImage(images)
     }
 
+    const infoToBasicInformation = async (info) => {
+      setBasicInfoProduct(info);
+    };
+
+    const infoToPriceProduct = async (infoPrice) => {
+      setPriceProduct(infoPrice);
+    };
+
+    const infoToStockProduct = async (infoStock) => {
+      setStockProduct(infoStock);
+    };
+
     const handleCreateProduct = async () =>{
+
+      const fornecedorId = seller?.fornecedorId
+
+      const variacoes = productImage.map((img) => ({
+        CorNome: img.colorName,
+        CorCodigo: img.colorHex,
+        ImagemBase64: img.url,
+      }));
+
       const body = {
-        nome: basicInfoProduct.Nome,
-        preco: priceProduct.Preco,
-        fornecedorId: 1,
-        imagem1_base64: productImage[0].url,
-        imagem1_cor_nome: productImage[0].colorName,
-        imagem1_cor_codigo: productImage[0].colorHex,
-        
-        imagem2_base64: productImage[1].url,
-        imagem2_cor_nome: productImage[1].colorName,
-        imagem2_cor_codigo: productImage[1].colorHex,
-
-        imagem3_base64: productImage[2].url,
-        imagem3_cor_nome: productImage[2].colorName,
-        imagem3_cor_codigo: productImage[2].colorHex,
-
+        Nome: basicInfoProduct.Nome,
+        Preco: priceProduct.Preco,
+        Descricao: basicInfoProduct.Descricao,
+        Marca: basicInfoProduct.Marca,
+        estoque: stockProduct.QuantidadeInicial,
+        FornecedorId: fornecedorId,
+        Variacoes: variacoes,
       };
+      
+      try{
+          console.log("basicInfoProduct:", basicInfoProduct);
+console.log("priceProduct:", priceProduct);
+        const response = await CreateProduct(body)
+        console.log("produto criado", response)
+      }catch(error){
+        console.error("Erro ao criar o produto:", error)
+      }
     }
 
     return (
@@ -51,20 +76,20 @@ export default function RegisterProduct() {
           <h2>Cadastro de Produto</h2>
           <p>Preencha todas as informações do produto para ser cadastrado</p>
           <div className="form-register-product">
-            <BasicInformation />
+            <BasicInformation onCreateBasicInfo={infoToBasicInformation} />
             <div className="teste">
               <div className="teste1">
-                <PriceProduct />
+                <PriceProduct onCreatePrice={infoToPriceProduct} />
               </div>
               <div className="teste1">
-                <StockProduct />
+                <StockProduct onCreateStock={infoToStockProduct} />
               </div>
               <div>
-                <ButtonCreateProduct />
+                <ButtonCreateProduct onSubmitCreate={handleCreateProduct} />
               </div>
             </div>
           </div>
-          <ImageProduct onImageChange={handleImageChange} />
+          <ImageProduct onImageChange={infoImageChange} />
         </div>
       </div>
     );

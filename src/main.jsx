@@ -17,6 +17,7 @@ import ExchangeReturnPolicy from './components/FooterComponents/ExchangeReturnPo
 import ProductScreen from './router/ProductScreen/index.jsx'
 import HomeSeller from './Templates/Seller/HomeSeller/index.jsx'
 import RegisterProduct from './Templates/Seller/RegisterProduct/index.jsx'
+import { AuthProvider } from './Context/AuthContext.jsx'
 
 // Aqui colocamos a estrutura do "APP" nas rotas. APP = PAI FILHOS = ROTAS
 const router = createBrowserRouter([
@@ -101,8 +102,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router = {router}/>
-  </StrictMode>,
-)
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  </StrictMode>
+);

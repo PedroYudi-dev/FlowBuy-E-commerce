@@ -2,27 +2,44 @@
 import { useState } from "react";
 import "./style.css";
 
-export default function PriceProduct() {
+export default function PriceProduct({onCreatePrice}) {
 
     const [price, setPrice] = useState("")
+    // const [priceError, setPriceError] = useState("")
 
     // funtion
-    const handleFormtPrice = (e) =>{
-        const removeNotNumber = e.target.value.replace(/\D/g, "")
-        const FormatNumber= (Number(removeNotNumber)/100).toLocaleString("pt-BR", {
-            style:"currency",
-            currency:"BRL"
-        })
-        setPrice(FormatNumber)
-    }
+    const handleFormtPrice = (e) => {
+      const onlyNumbers = e.target.value.replace(/\D/g, "");
+      const numericValue = Number(onlyNumbers) / 100;
 
+      setPrice(numericValue);
+      onCreatePrice({ Preco: numericValue });
+    };
+
+  
   return (
-    <form id="container-price-product">
+    <div id="container-price-product">
       <h3>Preço do Produto</h3>
       <div className="structure-price">
         <label>Preço</label>
-        <input type="text"  min="0" step="0.01" placeholder="R$50,00" required value={price} onChange={handleFormtPrice}/>
+        <input
+          type="text"
+          min="0"
+          step="0.01"
+          placeholder="R$50,00"
+          required
+          value={
+            price
+              ? price.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })
+              : ""
+          }
+          onChange={handleFormtPrice}
+        />
+        {/* {priceError && <p style={{ color: "red" }}>{priceError}</p>} */}
       </div>
-    </form>
+    </div>
   );
 }
