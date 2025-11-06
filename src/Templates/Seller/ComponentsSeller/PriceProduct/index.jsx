@@ -1,22 +1,25 @@
 // import
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./style.css";
 
-export default function PriceProduct({onCreatePrice}) {
+export default function PriceProduct({ onCreatePrice, reset }) {
+  const [price, setPrice] = useState("");
+  // const [priceError, setPriceError] = useState("")
 
-    const [price, setPrice] = useState("")
-    // const [priceError, setPriceError] = useState("")
+  useEffect(() => {
+    if (reset) {
+      setPrice("");
+    }
+  }, [reset]);
+  // funtion
+  const handleFormtPrice = (e) => {
+    const onlyNumbers = e.target.value.replace(/\D/g, "");
+    const numericValue = Number(onlyNumbers) / 100;
 
-    // funtion
-    const handleFormtPrice = (e) => {
-      const onlyNumbers = e.target.value.replace(/\D/g, "");
-      const numericValue = Number(onlyNumbers) / 100;
+    setPrice(numericValue);
+    onCreatePrice({ Preco: numericValue });
+  };
 
-      setPrice(numericValue);
-      onCreatePrice({ Preco: numericValue });
-    };
-
-  
   return (
     <div id="container-price-product">
       <h3>Preço do Produto</h3>

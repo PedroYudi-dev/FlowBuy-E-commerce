@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./style.css"
 import { CreateProduct } from "../../../../Services/Services_Ecommerce/Post/postCreateProduct";
 
-export default function BasicInformation({ onCreateBasicInfo }) {
+export default function BasicInformation({ onCreateBasicInfo, reset }) {
   const [nameProduct, setNameProduct] = useState("");
   const [descripitonProduct, setDescripitonProduct] = useState("");
   const [brand, setBrand] = useState("");
@@ -17,6 +17,16 @@ export default function BasicInformation({ onCreateBasicInfo }) {
        Marca: brand,
      });
    }, [nameProduct, descripitonProduct, brand, onCreateBasicInfo]);
+
+   useEffect(() =>{
+    if(reset){
+      setNameProduct("");
+      setDescripitonProduct("");
+      setBrand("");
+      setNameError("");
+      setDescriptionError("");
+    }
+   }, [reset])
 
   const handleValidationName = (e) => {
     const nameValue = String(e.target.value);

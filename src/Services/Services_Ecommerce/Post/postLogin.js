@@ -6,6 +6,7 @@ export const validationLogin = async (body) =>{
         const response = await api.post(`api/Auth/Login`, body)
         const data = response.data
         sessionStorage.setItem("Seller", JSON.stringify(data));
+        sessionStorage.setItem("Buyer", JSON.stringify(data));
 
         if(data.FornecedorId){
             sessionStorage.setItem("fornecedorId", data.FornecedorId);

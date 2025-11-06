@@ -7,6 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 //Icons
 import { Search, CircleUserRound, ShoppingCart, Import } from "lucide-react";
 import { searchProduct } from "../../Services/getProduct/searchGetProduct";
+import ButtonLogout from "../Buttons/ButtonLogout";
 
 
 
@@ -16,6 +17,8 @@ export default function NavBar(){
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [buyerEmail, setBuyerEmail] = useState("")
+  const [islogin, setIsLogin] = useState(false)
 
   const navigate = useNavigate()
 
@@ -48,7 +51,14 @@ export default function NavBar(){
       return () => clearTimeout(delay)
 }, [query])
   
-
+  useEffect(() =>{
+    const storeBuyer = sessionStorage.getItem("Buyer");
+    if(storeBuyer){
+      const buyerData = JSON.parse(storeBuyer);
+      setBuyerEmail(buyerData.email);
+      setIsLogin(true);
+    }
+  },[])
   const handleChange = (e) =>{
     setQuery(e.target.value)
   }
@@ -84,6 +94,14 @@ export default function NavBar(){
      }
    };
 
+   const handleLogout = () =>{
+    sessionStorage.clear();
+    setIsLogin(false);
+    setBuyerEmail("")
+    navigate("/Login")
+    
+   }
+
 
     const backPageHome = location.pathname.startsWith("/Buyer") ? "/Buyer" : "/";
 
@@ -95,10 +113,16 @@ export default function NavBar(){
           </Link>
         </div>
         <div id="login-home">
-          <Tooltip text="Login">
-            <Link to="/Login">
-              <CircleUserRound color="#fff" className="icon-login" />
-            </Link>
+          <Tooltip text={!buyerEmail ? "Login" : `${buyerEmail}`}>
+            {!islogin ? (
+              <Link to="/Login">
+                <CircleUserRound color="#fff" className="icon-login" />
+              </Link>
+            ) : (
+              <div>
+                <CircleUserRound color="#fff" className="icon-login" />
+              </div>
+            )}
           </Tooltip>
         </div>
         <div id="search-home">
@@ -136,14 +160,21 @@ export default function NavBar(){
           )}
         </div>
 
-        <div id="resgistrar">
-          <div className="Register">
-            <Link to="/Buyer/Login">Cadastrar</Link>
-          </div>
-          <div className="Register-seller">
-            <Link to="/Seller/Login">Cadastrar como Vendedor</Link>
-          </div>
-        </div>
+        {!islogin ? (
+          <>
+            <div id="resgistrar">
+              <div className="Register">
+                <Link to="/Buyer/Login">Cadastrar</Link>
+              </div>
+              <div className="Register-seller">
+                <Link to="/Seller/Login">Cadastrar como Vendedor</Link>
+              </div>
+            </div>
+          </>
+        ) : (
+          <ButtonLogout onClick={handleLogout} text="Desconectar" />
+        )}
+
         <div id="car-buy">
           <Tooltip text="Carrinho">
             <Link>

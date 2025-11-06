@@ -2,11 +2,12 @@
   width: 100%;
   position: relative;
   top: 40px;
+  overflow: hidden;
 }
 
 .progress-slide-carousel {
   width: 100%;
-  height: 384px; 
+  height: 460px; 
   
 }
 
@@ -28,7 +29,10 @@
   width: 100%;
   height: 100%;
   object-fit: cover; /* ajusta sem distorcer */
+  object-position: center; 
+  
 }
+
 
 /* Barra de progresso */
 .swiper-pagination-progressbar {

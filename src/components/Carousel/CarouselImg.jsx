@@ -40,12 +40,12 @@ export default function CarouselImg(){
           </SwiperSlide>
           <SwiperSlide>
             <div className="slide">
-              <img src="/Images/Banner de Geladeira-2.png" alt="" />
+              <img src="/Images/Banner Galaxy Z.png" alt="" />
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="slide">
-              <img src="/Images/BAnner de almofadas.png" alt="" />
+              <img src="/Images/Iphone 17.png" alt="" />
             </div>
           </SwiperSlide>
           <SwiperSlide>

@@ -1,11 +1,33 @@
 // import
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 
 // Icons
 import { Box, Boxes, ChartColumn, Store } from "lucide-react";
+import { useEffect, useState } from "react";
+import ButtonLogout from "../../../../components/Buttons/ButtonLogout";
 
 export default function NavBarSeller() {
+
+  const [sellerEmail, setSellerEmail] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() =>{
+    const storeSeller = sessionStorage.getItem("Seller");
+    if(storeSeller){
+      const sellerData = JSON.parse(storeSeller);
+      setSellerEmail(sellerData.email);
+      setIsLogin(true);
+    }
+  }, [])
+
+  const handleLogout = () =>{
+    sessionStorage.clear();
+    setIsLogin(false)
+    setIsLogin("")
+    navigate("/Login")
+  }
   return (
     <nav className="container-nav-seller">
       <div id="logo-nav-seller">
@@ -33,14 +55,38 @@ export default function NavBarSeller() {
           </Link>
         </div>
       </div>
+      
       <div id="PanelSeller">
         <div className="PanelAttributes">
           <Store color="#fff" />
         </div>
         <div>
-          <h3>Painel do Vendedor</h3>
-          <p>Gerencie seus Produtos</p>
+          {sellerEmail ? (
+            <>
+              <h4>Vendedor: {sellerEmail}</h4>
+              <p>Gerencie seus Produtos</p>
+            </>
+          ) : (
+            <>
+              <h4>Painel do Vendedor</h4>
+              <p>
+                Faça o seu Login{" "}
+                <Link to="/Login">
+                  <p style={{fontWeight: "bold"}}>Clique Aqui</p>
+                </Link>
+              </p>
+            </>
+          )}
         </div>
+      </div>
+      <div>
+        {isLogin ? (
+          <>
+            <ButtonLogout onClick={handleLogout} text="Desconectar" />
+          </>
+        ) : (
+          ""
+        )}
       </div>
     </nav>
   );

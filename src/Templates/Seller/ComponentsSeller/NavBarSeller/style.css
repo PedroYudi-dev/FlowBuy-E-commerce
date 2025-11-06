@@ -10,7 +10,7 @@
     width: 100%;
     max-height: 125px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -54,7 +54,6 @@
 #PanelSeller{
     display: flex;
     justify-content: center;
-    gap: 15px;
 }
 
 .PanelAttributes{
@@ -64,7 +63,7 @@
     align-items: center;
     
 }
-#PanelSeller h3{
+#PanelSeller h4{
     color: #fff;
     margin: 0; 
 }

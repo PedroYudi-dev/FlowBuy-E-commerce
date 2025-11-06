@@ -21,19 +21,24 @@ const colors = [
   { name: "Cinza", hex: "#808080" },
 ];
 
-export default function ImageUploader({ onImageChange }) {
+export default function ImageUploader({ onImageChange, reset }) {
   const [images, setImages] = useState([]);
 
-  const readFileBase64 = (file) =>{
+  useEffect(() => {
+    if (reset) {
+      setImages([]);
+    }
+  }, [reset]);
+  const readFileBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => resolve(reader.result);
-      reader.onerror = () => reject(reader.error)
-      reader.readAsDataURL(file)
+      reader.onerror = () => reject(reader.error);
+      reader.readAsDataURL(file);
     });
-  }
+  };
 
-  const handleAddImage = useCallback( async (acceptedFiles) => {
+  const handleAddImage = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles[0];
     if (!file) return;
 
@@ -46,14 +51,13 @@ export default function ImageUploader({ onImageChange }) {
       return;
     }
 
-    try{
-      const base64 = await readFileBase64(file)
-       const newImage = { file, url: base64, colorName: "", colorHex: "" };
-      setImages((prev) => [...prev, newImage].slice(0, 3)); 
-    }catch(error){
-      alert("Erro ao processar a imagem", error)
+    try {
+      const base64 = await readFileBase64(file);
+      const newImage = { file, url: base64, colorName: "", colorHex: "" };
+      setImages((prev) => [...prev, newImage].slice(0, 3));
+    } catch (error) {
+      alert("Erro ao processar a imagem", error);
     }
-
   }, []);
 
   const removeImage = (index) => {
