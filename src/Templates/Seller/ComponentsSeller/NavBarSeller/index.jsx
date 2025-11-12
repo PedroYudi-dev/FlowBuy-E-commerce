@@ -37,7 +37,7 @@ export default function NavBarSeller() {
       </div>
       <div id="Seller-attributes">
         <div className="attributes">
-          <Link>
+          <Link to="ProductsSeller">
             <Box color="#fff" className="icon-Products" />
             <p>Produto</p>
           </Link>

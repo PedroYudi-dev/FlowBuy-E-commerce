@@ -89,4 +89,54 @@
   height: 16px;
 }
 
+.SelectColor{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.SelectColor label{
+    color:#916224;
+    font-size: 0.9rem;
+}
+.SelectColor select{
+    max-width: 150px;
+    height: 40px;
+    border: 2px solid #916224;
+    border-radius: 10px;
+    padding: 0 8px;
+}
+
+.structureStockInImage{
+  display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.structureStockInImage label{
+    font-size: 0.9rem;
+    color: #916224;
+}
+
+.structureStockInImage input{
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: 2px solid #916224;
+    width: 300px;
+}
+
+.structurePriceInImage{
+  display: flex;
+    flex-direction: column;
+}
+.structurePriceInImage label{
+  font-size: 0.9rem;
+    color: #916224;
+}
+.structurePriceInImage input{
+  padding: 10px 10px;
+    border-radius: 10px;
+    border: 2px solid #916224;
+    width: 300px;
+}
 

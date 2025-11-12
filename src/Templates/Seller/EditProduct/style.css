@@ -5,28 +5,27 @@
     font-family: "Montserrat", sans-serif;
 }
 
-#container-register-product {
+#container-Edit-product {
   min-height: 100vh;
   background-color: #fff;
 }
 
-.structure-register-product{
+.structure-Edit-product{
     margin: 0 auto;
     padding: 40px 0 ;
     width: 100%;
     max-width:1200px;
 }
-.structure-register-product h2{
+.structure-Edit-product h2{
     color: #423524;
     text-align: center;
 }
-.structure-register-product p{
+.structure-Edit-product p{
     color: #797878;
     font-size: 0.9rem;
     text-align: center;
 }
-
-.form-register-product{
+.form-Edit-product{
     margin-top: 30px;
     display: flex;
     flex-direction: column;
@@ -35,12 +34,12 @@
     align-items: center;
 }
 
-.teste{
+.testeEdit{
     padding: 0 20px;
     
 }
 
-.teste1{
+.testeEdit1{
     margin-bottom: 20px;
 }
 

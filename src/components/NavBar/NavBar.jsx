@@ -6,8 +6,9 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 //Icons
 import { Search, CircleUserRound, ShoppingCart, Import } from "lucide-react";
-import { searchProduct } from "../../Services/getProduct/searchGetProduct";
+// import { searchProduct } from "../../Services/getProduct/searchGetProduct";
 import ButtonLogout from "../Buttons/ButtonLogout";
+import { searchGetProduct } from "../../Services/Services_Ecommerce/Get/GetSearchPorducts";
 
 
 
@@ -32,7 +33,7 @@ export default function NavBar(){
     setLoading(true);
     const start = Date.now();
     try{
-      const dataSearchProduct = await searchProduct(search);
+      const dataSearchProduct = await searchGetProduct(search);
       setProducts(dataSearchProduct);
     }catch(error){
       console.error("Erro para buscar produtos:", error)
@@ -147,13 +148,13 @@ export default function NavBar(){
                   className={index === selectedIndex ? "selected" : ""}
                   ref={(prod) => (listProduct.current[index] = prod)}
                   onClick={() => {
-                    navigate(`/Produto/${product.id}/${product.titulo}`);
+                    navigate(`/Produto/${product.id}/${product.nome}`);
                     setQuery("");
                     setProducts([]);
                   }}
                 >
                   <Search className="icon-product" />
-                  {product.titulo}
+                  {product.nome}
                 </li>
               ))}
             </ul>

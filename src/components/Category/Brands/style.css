@@ -5,21 +5,33 @@
     font-family: "Montserrat", sans-serif;
 }
 
-
-#Container-SelectionProducts{
-    display: grid;
-    align-items: center;
-    margin-top: 200px;
+#conatiner-Brands-screen{
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    background-color: #fff;
 }
 
-#Container-SelectionProducts h1{
+#Brands-screen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Container-Brands{
+    display: grid;
+    align-items: center;
+    margin-top: 100px;
+}
+
+#Container-Brands h1{
     text-align: center;
     font-size: 3rem;
     font-weight: bold;
     color: #0b14c8;
 }
 
-#structure-SelectionProducts{
+#structure-Brands{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 30px;
@@ -28,7 +40,7 @@
     padding: 0 40px;    
 }
 
-.Products {
+.Brands {
     max-width: 300px;
     width: 100%;
     border: 3px solid #bebebe;
@@ -44,7 +56,7 @@
 }
 
 
-.Products img {
+.Brands img {
     width: 100%;
     height: 200px; 
     object-fit: contain; 
@@ -53,13 +65,13 @@
 
 
 
-.Products:hover{
+.Brands:hover{
     opacity: 1;
     box-shadow: #0b14c8 0px 13px 27px -5px, #0b14c8 0px 8px 16px -8px;
     transition: 0.9s;
 }
 
-.Products .info-product{
+.Brands .info-Brands{
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -67,25 +79,25 @@
     gap:20px; 
 }
 
-.info-product p{
+.info-Brands p{
     font-weight: bold;
     font-size: 1.7rem;
     
 }
-.info-product label{
+.info-Brands label{
     font-weight: bold;
     font-size: 1.5rem;
 }
 
-.button-buy{
+.button-buy-Brands{
     margin-top: 10px;
 }
 
-.button-buy button{
+.button-buy-Brands button{
     cursor: pointer;
 }
 
-.buy-product{
+.buy-product-Brands{
      width: 100%;
     padding: 10px ;
     background-color: #0b14c8;

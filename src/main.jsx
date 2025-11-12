@@ -18,6 +18,9 @@ import ProductScreen from './router/ProductScreen/index.jsx'
 import HomeSeller from './Templates/Seller/HomeSeller/index.jsx'
 import RegisterProduct from './Templates/Seller/RegisterProduct/index.jsx'
 import { AuthProvider } from './Context/AuthContext.jsx'
+import ProductsSeller from './Templates/Seller/ProductsSeller/index.jsx'
+import EditProductSingle from "./Templates/Seller/EditProduct/index.jsx";
+import Brands from './components/Category/Brands/index.jsx'
 
 // Aqui colocamos a estrutura do "APP" nas rotas. APP = PAI FILHOS = ROTAS
 const router = createBrowserRouter([
@@ -58,6 +61,10 @@ const router = createBrowserRouter([
         path: "/Produto/:id/:titulo?",
         element: <ProductScreen />,
       },
+      {
+        path: "Brand/:marca",
+        element: <Brands />,
+      },
     ],
   },
   {
@@ -84,6 +91,10 @@ const router = createBrowserRouter([
         path: "Produto/:id/:titulo?",
         element: <ProductScreen />,
       },
+      {
+        path: "Brand/:marca",
+        element: <Brands />,
+      },
     ],
   },
   {
@@ -92,11 +103,19 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomeSeller/>,
+        element: <HomeSeller />,
       },
       {
-        path:"registerProduct",
-        element: <RegisterProduct/>
+        path: "registerProduct",
+        element: <RegisterProduct />,
+      },
+      {
+        path: "ProductsSeller",
+        element: <ProductsSeller />,
+      },
+      {
+        path: "ProductsSeller/EditProduct/:id",
+        element: <EditProductSingle />,
       },
     ],
   },

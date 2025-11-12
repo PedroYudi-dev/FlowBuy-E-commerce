@@ -1,30 +1,34 @@
 // Import
+// import { useState } from "react";
 import "./Category.css"
+import { useNavigate } from "react-router-dom";
 
 // state
 
 export default function Category(){
 
+  const navigate = useNavigate()
+  // const [productBrand, setProductBrand] = useState()
+  const brands = [
+    { name: "Apple", image: "/Images_Category/Apple.jpg" },
+    { name: "Samsung", image: "/Images_Category/Samsung.jpg" },
+    { name: "Xiaomi", image: "/Images_Category/Xiaomi.jpg" },
+    { name: "Huawei", image: "/Images_Category/Huawei.jpg" },
+  ];
+
     return (
       <div className="Container-Category">
-        <h1>Category</h1>
         <div id="structure-category">
-          <div className="Category">
-            <img src="/Images_Category/Eltronicos.jpg" alt="Eletronicos" />
-            <label htmlFor="">Eletronicos</label>
-          </div>
-          <div className="Category">
-            <img src="/Images_Category/Cozinha.jpeg" alt="Cozinha" />
-            <label htmlFor="">Cozinha</label>
-          </div>
-          <div className="Category">
-            <img src="/Images_Category/Roupas.jpeg" alt="Roupas" />
-            <label htmlFor="">Moda</label>
-          </div>
-          <div className="Category">
-            <img src="/Images_Category/pet.jpeg" alt="Pet" />
-            <label htmlFor="">Pet</label>
-          </div>
+          {brands.map((brand) => (
+            <div
+              key={brand.name}
+              className="Category"
+              onClick={() => navigate(`/Brand/${brand.name}`)}
+            >
+              <img src={brand.image} alt={brand.name} />
+              <label>{brand.name}</label>
+            </div>
+          ))}
         </div>
       </div>
     );

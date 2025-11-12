@@ -1,22 +1,33 @@
 // css
+import { useState } from "react";
 import "./style.css"
 
 
-export default function Variation(){
-    return (
-      <div>
-        <label>Color: </label>
-        <div className="Variation-structure">
-          <button style={{backgroundColor: "black"}}>
-            
-          </button>
-          <button style={{backgroundColor: "blue"}}>
+export default function Variation({ variacoes = [], onSelect }) {
+  const [selected, setSelected] = useState(null);
 
-          </button>
-          <button style={{backgroundColor: "pink"}}>
-
-          </button>
-        </div>
+  const handleSelect = (index) => {
+    setSelected(index);
+    if(onSelect)
+      onSelect(variacoes[index])
+  };
+  return (
+    <div>
+      <label>Color: </label>
+      <div className="Variation-structure">
+        {variacoes.map((v, index) => (
+          <button
+            key={v.id || index}
+            onClick={() => handleSelect(index)}
+            style={{
+              backgroundColor: v.corCodigo,
+              border: selected === index ? "3px solid #444" : "1px solid #ccc",
+            }}
+            title={v.corNome}
+            className={selected === index ? "selected" : ""}
+          />
+        ))}
       </div>
-    );
+    </div>
+  );
 }

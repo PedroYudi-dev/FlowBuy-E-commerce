@@ -74,6 +74,46 @@ export default function ImageUploader({ onImageChange, reset }) {
     );
   };
 
+  const handleStockChange = (index, value) => {
+
+  const numericValue = Number(value);
+  let error = "";
+
+  if (numericValue < 0) {
+    error = "O estoque não pode ser negativo.";
+  } else if (!Number.isInteger(numericValue)) {
+    error = "O valor deve ser um número inteiro.";
+  } else if (numericValue > 10000) {
+    error = "O estoque máximo é 10.000 unidades.";
+  }
+
+  setImages((prev) =>
+    prev.map((img, i) =>
+      i === index ? { ...img, stockQuantity: numericValue, stockError: error } : img
+    )
+  );
+};
+
+
+const handlePriceChange = (index, value) => {
+  // remove caracteres não numéricos
+  const onlyNumbers = value.replace(/\D/g, "");
+  const numericValue = Number(onlyNumbers) / 100;
+
+  let error = "";
+  if (numericValue < 0) {
+    error = "O preço não pode ser negativo.";
+  } else if (numericValue > 99999.99) {
+    error = "Preço máximo é R$99.999,99.";
+  }
+
+  setImages((prev) =>
+    prev.map((img, i) =>
+      i === index ? { ...img, price: numericValue, priceError: error } : img
+    )
+  );
+};
+
   useEffect(() => {
     onImageChange(images);
   }, [images, onImageChange]);
@@ -99,32 +139,69 @@ export default function ImageUploader({ onImageChange, reset }) {
             </div>
 
             <div>
-              <label>Cor do Produto {index + 1}</label>
-              <select
-                value={image.colorHex}
-                onChange={(e) => handleSelectColor(index, e.target.value)}
-              >
-                <option value="">Selecione a cor</option>
-                {colors.map((color) => (
-                  <option key={color.hex} value={color.hex}>
-                    {color.name}
-                  </option>
-                ))}
-              </select>
+              <div className="SelectColor">
+                <label>Cor do Produto {index + 1}</label>
 
-              {image.colorHex && (
-                <div
-                  className="color-preview"
-                  style={{
-                    backgroundColor: image.colorHex,
-                    width: "25px",
-                    height: "25px",
-                    borderRadius: "50%",
-                    margin: "6px auto 0",
-                    border: "1px solid #ccc",
-                  }}
+                <select
+                  value={image.colorHex}
+                  onChange={(e) => handleSelectColor(index, e.target.value)}
+                >
+                  <option value="">Selecione a cor</option>
+                  {colors.map((color) => (
+                    <option key={color.hex} value={color.hex}>
+                      {color.name}
+                    </option>
+                  ))}
+                </select>
+                {image.colorHex && (
+                  <div
+                    className="color-preview"
+                    style={{
+                      backgroundColor: image.colorHex,
+                      width: "25px",
+                      height: "25px",
+                      borderRadius: "50%",
+                      margin: "6px auto 0",
+                      border: "1px solid #ccc",
+                    }}
+                  />
+                )}
+              </div>
+
+              <div className="structureStockInImage">
+                <label>Estoque dessa variação</label>
+                <input
+                  type="number"
+                  min="0"
+                  max="10000"
+                  value={image.stockQuantity || ""}
+                  onChange={(e) => handleStockChange(index, e.target.value)}
+                  placeholder="Ex: 20"
                 />
-              )}
+                {image.stockError && (
+                  <p style={{ color: "red" }}>{image.stockError}</p>
+                )}
+              </div>
+
+              <div className="structurePriceInImage">
+                <label>Preço dessa variação</label>
+                <input
+                  type="text"
+                  value={
+                    image.price
+                      ? image.price.toLocaleString("pt-BR", {
+                          style: "currency",
+                          currency: "BRL",
+                        })
+                      : ""
+                  }
+                  onChange={(e) => handlePriceChange(index, e.target.value)}
+                  placeholder="Ex: R$199,90"
+                />
+                {image.priceError && (
+                  <p style={{ color: "red" }}>{image.priceError}</p>
+                )}
+              </div>
             </div>
           </div>
         ))}

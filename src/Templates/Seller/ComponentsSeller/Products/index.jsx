@@ -1,18 +1,21 @@
-// chamada
-// import { getProduct } from "../../Services/getProduct/allGetProduct"
-import "./SelectionProducts.css";
+import "./style.css";
 
+// chamada
+// import { getProduct } from "../../../../Services/getProduct/allGetProduct";
+import { GetProductScreenSeller } from "../../../../Services/Services_Ecommerce/Get/GetProductScreenSeller";
+import { Delete } from "../../../../Services/Services_Ecommerce/Delete/DeleteProduct";
 // icons
-import { Star } from "lucide-react";
+import { SquarePen, Star, Trash2 } from "lucide-react";
 
 // UseState
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ProductAll } from "../../Services/Services_Ecommerce/Get/GetProductAll";
 import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
-import { Alert } from "../Alert/alert";
+import { Alert } from "../../../../components/Alert/alert";
 
-export default function SelectionProducts() {
+export default function SelectionProductsSeller() {
+  const sellerData = JSON.parse(sessionStorage.getItem("Seller"));
+  const fornecedorId = sellerData?.fornecedorId || sellerData?.FornecedorId;
   const [produto, setProduto] = useState([]);
   const navigate = useNavigate();
   const [openSnack, setOpenSnack] = useState(false);
@@ -21,10 +24,15 @@ export default function SelectionProducts() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const viewProductGet = async () => {
+    const viewProductGetSeller = async () => {
       setLoading(true);
       try {
-        const dataProduct = await ProductAll();
+        if (!fornecedorId) {
+          console.log("FornecedorId não encontrado.");
+          return;
+        }
+
+        const dataProduct = await GetProductScreenSeller(fornecedorId);
         setProduto(dataProduct);
         if (!dataProduct) {
           setSnackMessage("Não foi possivel mostrar os produtos");
@@ -37,10 +45,23 @@ export default function SelectionProducts() {
       } catch (error) {
         console.error(error, "Não foi possivel mostrar os produtos");
       }
-      setLoading(false);
+       setLoading(false);
     };
-    viewProductGet();
-  }, []);
+    viewProductGetSeller();
+  }, [fornecedorId]);
+
+  const handleDeleteProduct = async (produtoId) => {
+    const deleteProduct = await Delete(produtoId);
+    if (!deleteProduct) {
+      setSnackMessage("Erro ao deletar o produto.");
+      setSnackSeverity("error");
+    } else {
+      setSnackMessage("Produto deletado com sucesso!");
+      setSnackSeverity("success");
+      setProduto(produto.filter((prod) => prod.id !== produtoId));
+    }
+    setOpenSnack(true);
+  };
 
   const handleCloseSnack = (event, reason) => {
     if (reason === "clickaway") return;
@@ -48,12 +69,13 @@ export default function SelectionProducts() {
   };
 
   return (
-    <div id="Container-SelectionProducts">
-      <div id="structure-SelectionProducts">
+    <div id="Container-SelectionProductsSeller">
+      <h1>Produtos Cadastrados</h1>
+      <div id="structure-SelectionProductsSeller">
         {produto.map((product) => (
-          <div className="Products" key={product.id}>
+          <div className="ProductsSeller" key={product.id}>
             <img src={product.imagemPrincipalBase64} alt={product.nome} />
-            <div className="info-product">
+            <div className="info-producSeller">
               <label htmlFor="">{product.nome}</label>
               <label style={{ fontSize: "1.2rem" }} htmlFor="">
                 Marca: {product.marca}
@@ -62,11 +84,11 @@ export default function SelectionProducts() {
                 Quantidade:{product.estoqueTotal}
               </p>
               <div className="stars">
-                <Star color="#f7eb0cff" className="star" />
-                <Star color="#f7eb0cff" className="star" />
-                <Star color="#f7eb0cff" className="star" />
-                <Star color="#f7eb0cff" className="star" />
-                <Star color="#f7eb0cff" className="star" />
+                <Star color="#f7eb0cff" className="starSeller" />
+                <Star color="#f7eb0cff" className="starSeller" />
+                <Star color="#f7eb0cff" className="starSeller" />
+                <Star color="#f7eb0cff" className="starSeller" />
+                <Star color="#f7eb0cff" className="starSeller" />
               </div>
               <p>
                 {product.preco &&
@@ -78,21 +100,28 @@ export default function SelectionProducts() {
                   })}
               </p>
             </div>
-            <div className="button-buy">
-              <button
-                type="submit"
-                className="buy-product"
-                onClick={() => {
-                  navigate(`/Produto/${product.id}/${product.nome}`);
-                }}
-              >
-                Visualizar
-              </button>
+            <div className="ButtonsProduct">
+              <div className="button-buySeller">
+                <button
+                  type="submit"
+                  className="buy-productSeller"
+                  onClick={() => {
+                    navigate(`EditProduct/${product.id}`);
+                  }}
+                >
+                  <SquarePen color="#0c0c0cff" />
+                </button>
+              </div>
+              <div className="DeleteProduct">
+                <button onClick={() => handleDeleteProduct(product.id)}>
+                  <Trash2 color="#ff0000ff" />
+                </button>
+              </div>
             </div>
-            <div className="button-car"></div>
           </div>
         ))}
       </div>
+
       <Snackbar
         open={openSnack}
         autoHideDuration={6000}

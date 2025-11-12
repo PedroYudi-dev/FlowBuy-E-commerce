@@ -5,18 +5,21 @@ import "./style.css";
 // Components
 import BasicInformation from "../ComponentsSeller/BasicInformation";
 import ImageProduct from "../ComponentsSeller/IamgeProduct";
-// import PriceProduct from "../ComponentsSeller/PriceProduct";
-// import StockProduct from "../ComponentsSeller/StockProduct";
+import PriceProduct from "../ComponentsSeller/PriceProduct";
+import StockProduct from "../ComponentsSeller/StockProduct";
 import ButtonCreateProduct from "../../../components/Buttons/ButtonCreateProduct";
-import { CreateProduct } from "../../../Services/Services_Ecommerce/Post/postCreateProduct";
+// import { CreateProduct } from "../../../Services/Services_Ecommerce/Post/postCreateProduct";
 import useAuth from "../../../hooks/UseAuth";
 
 // MUI/MATERIAL
 
 import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import { Alert } from "../../../components/Alert/alert";
+import { useParams } from "react-router-dom";
+import ButtonEditProduct from "../../../components/Buttons/ButtonEditProduct";
+import { EditProduct } from "../../../Services/Services_Ecommerce/Patch/PacthEditProduct";
 
-export default function RegisterProduct() {
+export default function EditProductSingle() {
   const [productImage, setProductImage] = useState([]);
   const [priceProduct, setPriceProduct] = useState({});
   const [basicInfoProduct, setBasicInfoProduct] = useState({});
@@ -26,12 +29,13 @@ export default function RegisterProduct() {
   const [snackMessage, setSnackMessage] = useState("");
   const [snackSeverity, setSnackSeverity] = useState("success");
   const [loading, setLoading] = useState(false);
-  const [resetForm, setResetForm] = useState(false);  
+  const [resetForm, setResetForm] = useState(false);
+  const { id } = useParams();
 
   useEffect(() => {
-    document.documentElement.classList.add("container-register-product");
+    document.documentElement.classList.add("container-Edit-product");
     return () =>
-      document.documentElement.classList.remove("container-register-product");
+      document.documentElement.classList.remove("container-Edit-product");
   });
 
   const infoImageChange = (images) => {
@@ -50,49 +54,47 @@ export default function RegisterProduct() {
   //   setStockProduct(infoStock);
   // };
 
-  const handleCreateProduct = async () => {
-    const fornecedorId =
-      seller?.fornecedorId || sessionStorage.getItem("fornecedorId");
+  const handleEditProduct = async () => {
+    const fornecedorId = seller?.fornecedorId;
     const imagemPrincipal = productImage[0];
 
     const variacoes = productImage.map((img) => ({
+      Id: img.id,
       CorNome: img.colorName,
       CorCodigo: img.colorHex,
       ImagemBase64: img.url,
-      QuantidadeEstoque: img.stockQuantity,
       Preco: img.price,
+      QuantidadeEstoque: img.stock,
     }));
 
     const body = {
       Nome: basicInfoProduct.Nome,
-      Preco: priceProduct.Preco,
+      Preco: priceProduct.Preco ?? basicInfoProduct.Preco ?? 0,
       Descricao: basicInfoProduct.Descricao,
       Marca: basicInfoProduct.Marca,
-      ImagemPrincipalBase64: imagemPrincipal.url,
+      ImagemPrincipalBase64: imagemPrincipal?.url,
       CorNomePrincipal: imagemPrincipal?.colorName || "",
       CorCodigoPrincipal: imagemPrincipal?.colorHex || "",
-      QuantidadeInicial: stockProduct.quantidadeInicial,
+      QuantidadeInicial: stockProduct.QuantidadeInicial ?? 0,
       FornecedorId: fornecedorId,
       Variacoes: variacoes,
     };
 
-      setLoading(true);
+    setLoading(true);
     try {
       console.log("basicInfoProduct:", basicInfoProduct);
       console.log("priceProduct:", priceProduct);
-      const response = await CreateProduct(body);
-      console.log("produto criado", response);
+      const response = await EditProduct(id, body);
+      console.log("produto Editado", response);
 
       await new Promise((time) => setTimeout(time, 4000));
 
       if (!response) {
-        setSnackMessage("Erro ao criar o produto. Tente novamente.");
+        setSnackMessage("Erro ao Editar o produto. Tente novamente.");
         setSnackSeverity("error");
-        
       } else {
-        setSnackMessage("Produto criado com sucesso!");
+        setSnackMessage("Produto Editado com sucesso!");
         setSnackSeverity("success");
-        
       }
 
       setOpenSnack(true);
@@ -101,9 +103,8 @@ export default function RegisterProduct() {
       setPriceProduct({});
       setStockProduct({});
       setResetForm(true);
-
     } catch (error) {
-      console.error("Erro ao criar o produto:", error);
+      console.error("Erro ao Editar o produto:", error);
     }
 
     setLoading(false);
@@ -114,29 +115,35 @@ export default function RegisterProduct() {
     setOpenSnack(false);
   };
   return (
-    <div id="container-register-product">
-      <div className="structure-register-product">
-        <h2>Cadastro de Produto</h2>
-        <p>Preencha todas as informações do produto para ser cadastrado</p>
-        <div className="form-register-product">
+    <div id="container-Edit-product">
+      <div className="structure-Edit-product">
+        <h2>Editar Produto</h2>
+        <p>Faça as alterações do seu produto</p>
+        <div className="form-Edit-product">
           <BasicInformation
             onCreateBasicInfo={infoToBasicInformation}
             reset={resetForm}
           />
-          <div className="teste">
-            {/* <div className="teste1">
+          <div className="testeEdit">
+            {/* <div className="testeEdit1">
               <PriceProduct
                 onCreatePrice={infoToPriceProduct}
                 reset={resetForm}
               />
             </div> */}
-            {/* <div className="teste1">
-              <StockProduct onCreateStock={infoToStockProduct} reset={resetForm}/>
+            {/* <div className="testeEdit1">
+              <StockProduct
+                onCreateStock={infoToStockProduct}
+                reset={resetForm}
+              />
             </div> */}
           </div>
           <ImageProduct onImageChange={infoImageChange} reset={resetForm} />
           <div>
-            <ButtonCreateProduct onSubmitCreate={handleCreateProduct} />
+            <ButtonEditProduct
+              text={"Editar Produto"}
+              onSubmitEdit={handleEditProduct}
+            />
           </div>
         </div>
       </div>
@@ -167,7 +174,7 @@ export default function RegisterProduct() {
       >
         <CircularProgress color="success" />
         <p style={{ fontSize: "1.2rem", color: "#fff", fontWeight: "Bold" }}>
-          Criando Produto...
+          Editando Produto...
         </p>
       </Backdrop>
     </div>

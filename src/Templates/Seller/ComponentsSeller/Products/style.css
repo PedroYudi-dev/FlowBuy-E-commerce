@@ -6,20 +6,20 @@
 }
 
 
-#Container-SelectionProducts{
+#Container-SelectionProductsSeller{
     display: grid;
     align-items: center;
-    margin-top: 200px;
+    padding: 40px 
 }
 
-#Container-SelectionProducts h1{
+#Container-SelectionProductsSeller h1{
     text-align: center;
     font-size: 3rem;
     font-weight: bold;
-    color: #0b14c8;
+    color: #423524;
 }
 
-#structure-SelectionProducts{
+#structure-SelectionProductsSeller{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 30px;
@@ -28,7 +28,7 @@
     padding: 0 40px;    
 }
 
-.Products {
+.ProductsSeller {
     max-width: 300px;
     width: 100%;
     border: 3px solid #bebebe;
@@ -44,7 +44,7 @@
 }
 
 
-.Products img {
+.ProductsSeller img {
     width: 100%;
     height: 200px; 
     object-fit: contain; 
@@ -53,13 +53,13 @@
 
 
 
-.Products:hover{
+.ProductsSeller:hover{
     opacity: 1;
-    box-shadow: #0b14c8 0px 13px 27px -5px, #0b14c8 0px 8px 16px -8px;
+    box-shadow: #423524 0px 30px 27px -5px, #423524 0px 8px 40px -8px;
     transition: 0.9s;
 }
 
-.Products .info-product{
+.ProductsSeller .info-producSeller{
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -67,29 +67,46 @@
     gap:20px; 
 }
 
-.info-product p{
+.info-producSeller p{
     font-weight: bold;
     font-size: 1.7rem;
     
 }
-.info-product label{
+.info-producSeller label{
     font-weight: bold;
     font-size: 1.5rem;
 }
 
-.button-buy{
+.ButtonsProduct{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.button-buySeller{
     margin-top: 10px;
 }
 
-.button-buy button{
+.button-buySeller button{
     cursor: pointer;
 }
 
-.buy-product{
-     width: 100%;
-    padding: 10px ;
-    background-color: #0b14c8;
-    color: #fff;
+.buy-productSeller{
+     width: 50px;
+    padding: 10px;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 1.0rem;
+    transition: 0.8s;
+    opacity: .9;
+} 
+
+.DeleteProduct{
+    width: 60px;
+    height: 50px;
+    padding: 10px;
     justify-content: center;
     border-radius: 10px;
     border: none;
@@ -97,7 +114,7 @@
     font-size: 1.0rem;
     transition: 0.8s;
     opacity: .7;
-} 
+}
 
 /* .car-product{
     width: 100%;
@@ -121,18 +138,18 @@ button:hover{
 
 
 @media (max-width: 1024px) {
-  #structure-SelectionProducts {
+  #structure-SelectionProductsSeller {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  #structure-SelectionProducts {
+  #structure-SelectionProductsSeller {
     grid-template-columns: 1fr;
   }
 }
 
-.stars {
+.starSeller {
   display: flex;
   align-items: center;
   gap: 4px;
