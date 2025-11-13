@@ -1,0 +1,82 @@
+#ContainerCartInProduct {
+  max-width: 800px;
+  width: auto;
+  border: 2px solid #0b14c8;
+  border-radius: 20px;
+  padding: 30px 30px;
+}
+
+.structureCart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detaliesPorductCart {
+  display: flex;
+  gap: 20px;
+}
+.detaliesPorductCart img {
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.detaliesPorductCart label {
+  font-size: 1.1rem;
+}
+
+.colorProductInCart {
+  border: 2px solid;
+  border-radius: 20px;
+  text-align: center;
+  width: 70px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.InfoProductValue {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+}
+
+.InfoProductValue p {
+  color: #3caf19;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.InfoProductValue input {
+  border-radius: 10px;
+  padding: 5px 0px;
+  text-align: center;
+}
+
+.RemoveProductInCart {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  align-items: center;
+  border-radius: 999px;
+  line-height: 1;
+  padding: 5px 10px;
+}
+.RemoveProductInCart p {
+  color: red;
+  font-size: 1rem;
+  margin: 0;
+  display: flex;
+}
+.RemoveProductInCart svg{
+  height: 18px;
+  width: 18px;
+}
+
+.RemoveProductInCart:hover {
+  opacity: 0.9;
+  background-color: #d9d9d9;
+  transform: scale(1.03);
+}

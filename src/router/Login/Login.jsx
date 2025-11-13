@@ -37,6 +37,7 @@ export default function Login() {
       });
 
       if (dataLogin.role === "Seller") {
+        // sessionStorage.setItem("fornecedorId", dataLogin.id);
         const sellerId = sessionStorage.getItem("sellerId");
         console.log("ID do seller:", sellerId);
         setUserRole("Vendedor");

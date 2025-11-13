@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+#conatinerCartProduct {
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.strucutureCartProduct{
+    margin: 0 auto;
+    padding: 40px 0 ;
+    width: 100%;
+    max-width:1200px;
+}
+
+.strucutureCartProduct h2{
+    color: #0b14c8;
+}
+
+.viewProductCart{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}

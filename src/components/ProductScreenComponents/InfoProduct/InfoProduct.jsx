@@ -1,6 +1,6 @@
 // Chamada
 // import { getSingleProduct } from "../../../Services/getProduct/singleGetProduct";
-import "./style.css"
+import "./style.css";
 import AvaliationProduct from "../Avation/AvaliationProduct";
 import ServicesTheProduct from "../../ServicesTheProduct";
 import ButtonCard from "../../Buttons/ButtonCard";
@@ -13,26 +13,38 @@ import { useState, useEffect } from "react";
 // Icons
 import { Star } from "lucide-react";
 import { GetSingleProductUnic } from "../../../Services/Services_Ecommerce/Get/singleProduct";
+import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
+import { Alert } from "../../Alert/alert";
 
-
-
-
-
-export default function InfoProduct(){
+export default function InfoProduct() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [detalies, setDetalies] = useState();
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedPreco, setselectedPreco] = useState(null);
+  const [openSnack, setOpenSnack] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+  const [snackSeverity, setSnackSeverity] = useState("success");
+  const [loading, setLoading] = useState(false);
   // Puxando o produto pelo Id
   useEffect(() => {
     const singleProduct = async () => {
+      setLoading(true);
       try {
         const dataSIngleProduct = await GetSingleProductUnic(id);
         setProduct(dataSIngleProduct);
+        if (!dataSIngleProduct) {
+          setSnackMessage("Não foi possivel mostrar o produto");
+          setSnackSeverity("error");
+        } else {
+          setSnackMessage("Produto carregado com sucesso!");
+          setSnackSeverity("success");
+        }
+        setOpenSnack(true);
       } catch (err) {
         console.log(err, "Erro ao buscar produto um único produto");
       }
+      setLoading(false);
     };
     singleProduct();
   }, [id]);
@@ -62,6 +74,11 @@ export default function InfoProduct(){
     if (variacao.preco) {
       setselectedPreco(variacao.preco);
     }
+  };
+
+  const handleCloseSnack = (event, reason) => {
+    if (reason === "clickaway") return;
+    setOpenSnack(false);
   };
 
   return (
@@ -95,9 +112,7 @@ export default function InfoProduct(){
             <Star color="yellow" />
             <Star color="yellow" />
             <Star color="yellow" />
-            <p>
-              {formattedPrice}
-            </p>
+            <p>{formattedPrice}</p>
             <p
               style={{
                 color: "#444",
@@ -172,6 +187,35 @@ export default function InfoProduct(){
       ) : (
         ""
       )}
+      <Snackbar
+        open={openSnack}
+        autoHideDuration={6000}
+        onClose={handleCloseSnack}
+      >
+        <Alert
+          onClose={handleCloseSnack}
+          severity={snackSeverity}
+          sx={{ color: "#fff", width: "100%" }}
+        >
+          <p style={{ color: "#fff" }}>{snackMessage}</p>
+        </Alert>
+      </Snackbar>
+
+      <Backdrop
+        open={loading}
+        sx={{
+          color: "#fff",
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+        }}
+      >
+        <CircularProgress color="success" />
+        <p style={{ fontSize: "1.2rem", color: "#fff", fontWeight: "Bold" }}>
+          Carregando Produto...
+        </p>
+      </Backdrop>
     </div>
   );
 }

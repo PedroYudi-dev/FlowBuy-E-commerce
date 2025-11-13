@@ -2,39 +2,39 @@
 import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import "./style.css";
 import { Alert } from "../../Alert/alert";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// import { useState } from "react";
 
 // state
 
 export default function ButtonCard({ productId }) {
-  const [openSnack, setOpenSnack] = useState(false);
-  const [snackMessage, setSnackMessage] = useState("");
-  const [snackSeverity, setSnackSeverity] = useState("success");
+  // const [openSnack, setOpenSnack] = useState(false);
+  // const [snackMessage, setSnackMessage] = useState("");
+  // const [snackSeverity, setSnackSeverity] = useState("success");
   // const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
 
   const heandleCheckUser = () => {
     const user = sessionStorage.getItem("Buyer");
 
     if (!user) {
       console.log(`O produto ${productId} não foi adicionado ao carrinho`);
-      setSnackMessage("Você precisa fazer login para adicionar ao carrinho!");
-      setSnackSeverity("error");
-      setOpenSnack(true);
+      navigate("/login")
       return
     }
 
   };
 
-  const handleCloseSnack = (event, reason) => {
-    if (reason === "clickaway") return;
-    setOpenSnack(false);
-  };
+  // const handleCloseSnack = (event, reason) => {
+  //   if (reason === "clickaway") return;
+  //   setOpenSnack(false);
+  // };
 
   return (
     <>
       <button className="car-product" onClick={heandleCheckUser}>Adicionar ao Carrinho</button>
 
-      <Snackbar
+      {/* <Snackbar
         open={openSnack}
         autoHideDuration={6000}
         onClose={handleCloseSnack}
@@ -46,7 +46,7 @@ export default function ButtonCard({ productId }) {
         >
           <p style={{ color: "#fff" }}>{snackMessage}</p>
         </Alert>
-      </Snackbar>
+      </Snackbar> */}
 
       {/* <Backdrop
         open={loading}

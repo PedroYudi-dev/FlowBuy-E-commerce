@@ -21,6 +21,7 @@ import { AuthProvider } from './Context/AuthContext.jsx'
 import ProductsSeller from './Templates/Seller/ProductsSeller/index.jsx'
 import EditProductSingle from "./Templates/Seller/EditProduct/index.jsx";
 import Brands from './components/Category/Brands/index.jsx'
+import CartProduct from './router/Cart/index.jsx'
 
 // Aqui colocamos a estrutura do "APP" nas rotas. APP = PAI FILHOS = ROTAS
 const router = createBrowserRouter([
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
         path: "Brand/:marca",
         element: <Brands />,
       },
+      {
+        path: "ShoppingCart",
+        element: <CartProduct />,
+      },
     ],
   },
   {
@@ -94,6 +99,10 @@ const router = createBrowserRouter([
       {
         path: "Brand/:marca",
         element: <Brands />,
+      },
+      {
+        path: "ShoppingCart",
+        element: <CartProduct />,
       },
     ],
   },
