@@ -9,7 +9,7 @@ import ImageProduct from "../ComponentsSeller/IamgeProduct";
 // import StockProduct from "../ComponentsSeller/StockProduct";
 import ButtonCreateProduct from "../../../components/Buttons/ButtonCreateProduct";
 import { CreateProduct } from "../../../Services/Services_Ecommerce/Post/postCreateProduct";
-import useAuth from "../../../hooks/UseAuth";
+// import useAuth from "../../../hooks/UseAuth";
 
 // MUI/MATERIAL
 
@@ -21,7 +21,7 @@ export default function RegisterProduct() {
   const [priceProduct, setPriceProduct] = useState({});
   const [basicInfoProduct, setBasicInfoProduct] = useState({});
   const [stockProduct, setStockProduct] = useState({});
-  const { seller } = useAuth();
+  // const { seller } = useAuth();
   const [openSnack, setOpenSnack] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
   const [snackSeverity, setSnackSeverity] = useState("success");
@@ -51,8 +51,8 @@ export default function RegisterProduct() {
   // };
 
   const handleCreateProduct = async () => {
-    const fornecedorId =
-      seller?.fornecedorId || sessionStorage.getItem("fornecedorId");
+    const sellerStorage = JSON.parse(sessionStorage.getItem("Seller"));
+    const fornecedorId = Number(sellerStorage?.fornecedorId);
     const imagemPrincipal = productImage[0];
 
     const variacoes = productImage.map((img) => ({
