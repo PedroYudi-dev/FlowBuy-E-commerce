@@ -21,7 +21,8 @@ export default function InfoProduct() {
   const [product, setProduct] = useState({});
   const [detalies, setDetalies] = useState();
   const [selectedImage, setSelectedImage] = useState(null);
-  const [selectedPreco, setselectedPreco] = useState(null);
+  const [selectedPreco, setSelectedPreco] = useState(null);
+  const [selectedQuantidade, setSelectedQuantidade] = useState(null);
   const [openSnack, setOpenSnack] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
   const [snackSeverity, setSnackSeverity] = useState("success");
@@ -72,7 +73,10 @@ export default function InfoProduct() {
       setSelectedImage(variacao.imagemBase64);
     }
     if (variacao.preco) {
-      setselectedPreco(variacao.preco);
+      setSelectedPreco(variacao.preco);
+    }
+    if (variacao.estoque) {
+      setSelectedQuantidade(variacao.estoque  );
     }
   };
 
@@ -102,7 +106,9 @@ export default function InfoProduct() {
                 marginBottom: "20px",
               }}
             >
-              Quantidade:{product.estoqueTotal}
+              {selectedQuantidade === null
+                ? `Estoque total: ${product.estoqueTotal ?? 0}`
+                : `Estoque: ${selectedQuantidade}`}
             </p>
             {/* <div>
               <AvaliationProduct produtoId={id}/>

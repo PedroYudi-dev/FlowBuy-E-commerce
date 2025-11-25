@@ -70,7 +70,7 @@ export default function SelectionProductsSeller() {
 
   return (
     <div id="Container-SelectionProductsSeller">
-      <h1>Produtos Cadastrados</h1>
+      {/* <h1>Produtos Cadastrados</h1> */}
       <div id="structure-SelectionProductsSeller">
         {produto.map((product) => (
           <div className="ProductsSeller" key={product.id}>
