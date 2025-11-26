@@ -15,6 +15,7 @@ import { Star } from "lucide-react";
 import { GetSingleProductUnic } from "../../../Services/Services_Ecommerce/Get/singleProduct";
 import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import { Alert } from "../../Alert/alert";
+import ShowReviewsProduct from "../Avation/ShowReviews";
 
 export default function InfoProduct() {
   const { id } = useParams();
@@ -178,9 +179,14 @@ export default function InfoProduct() {
             </div>
           )}
           {detalies === "review" && (
-            <div>
-              <h2>Reviews</h2>
-              <AvaliationProduct produtoId={id} />
+            <div className="reviewsStrututureInfo">
+              <div className="reviewAndButton">
+                <h2>Reviews</h2>
+                <AvaliationProduct produtoId={id} />
+              </div>
+              <div>
+                <ShowReviewsProduct productId={id}/>
+              </div>
             </div>
           )}
           {detalies === "suport" && (

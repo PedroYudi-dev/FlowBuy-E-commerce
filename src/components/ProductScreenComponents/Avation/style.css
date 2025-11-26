@@ -1,0 +1,133 @@
+
+.buttonCreateReview{
+    width: auto;
+    padding: 10px 20px;
+    border-radius: 10px;
+    height: 40px;
+    transition: 0.9s;
+    background: #0b14c8;
+    color: #fff;
+    transition: 0.9s;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.buttonCreateReview:hover{
+    opacity: .7;
+}
+.modalContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.ModalReviews{
+    background: #fff;
+    padding: 30px;
+    width: 45%;
+    max-width: 700%;
+    border-radius: 12px;
+}
+.ModalReviews h2{
+    color: #0b14c8;
+    margin-bottom: 40px;
+    font-size: 1.6rem;
+}
+
+/* .strutureAvaliation{
+    align-items: center;
+    justify-content:center ;
+    text-align: center;
+    padding: 10px 10px;
+
+} */
+
+.avaliationComentarios {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.avaliationComentarios label{
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #0b14c8;
+}
+
+.avaliationComentarios textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+}
+
+.avaliationEstrelas {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.stars {
+    display: flex;
+    margin-top: 10px;
+}
+.avaliationEstrelas label{
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #0b14c8;
+}
+.avaliationEstrelas input{
+    text-align: center;
+    height: 30px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.buttonAvaliation{
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+.buttonAvaliation button{
+    width: 100px;
+    border-radius: 10px;
+    height: 40px;
+    transition: 0.9s;
+}
+
+.buttonSair{
+    background: rgb(187, 5, 5);
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    
+}
+.buttonSair:hover{
+    opacity: .8;
+}
+
+.buttonSalvar{
+    background: #0b14c8;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+
+}
+.buttonSalvar:hover{
+    opacity: .8;
+}
+
+
+

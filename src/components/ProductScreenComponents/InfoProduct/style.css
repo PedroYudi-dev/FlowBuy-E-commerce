@@ -124,3 +124,13 @@ text-align: start;
 .Services{
   margin-top: 40px;
 }
+
+.reviewsStrututureInfo{
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewAndButton{
+  display: flex;
+  justify-content: space-between;
+}

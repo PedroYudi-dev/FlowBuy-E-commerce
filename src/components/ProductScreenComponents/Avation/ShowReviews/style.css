@@ -1,0 +1,37 @@
+.containerShowReviews{
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+
+
+.bixReview{
+    border: 2px solid #0b14c8;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.bixReview h3{
+    margin: 0 0 5px;
+    margin-bottom: 14px;
+    font-size: 1.3rem;
+}
+
+.strutureReviewProduct{
+    margin: 5px 0;
+}
+
+/* .strutureReviewProduct svg{
+    margin-bottom: 10px;
+} */
+
+.commetReview p{
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.deleteReview{
+    display: flex;
+    justify-content: flex-end;
+}
