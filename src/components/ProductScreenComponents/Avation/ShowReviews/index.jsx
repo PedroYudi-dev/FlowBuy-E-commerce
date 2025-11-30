@@ -14,6 +14,10 @@ export default function ShowReviewsProduct({ productId }) {
   const [snackMessage, setSnackMessage] = useState("");
   const [snackSeverity, setSnackSeverity] = useState("success");
 
+  const usuarioLogado = JSON.parse(sessionStorage.getItem("Buyer"));
+  const usuarioLogadoId = Number(usuarioLogado?.clienteId);
+
+
   const viewReview = async () => {
     setLoading(true);
     try {
@@ -75,12 +79,14 @@ export default function ShowReviewsProduct({ productId }) {
               </p>
             </div>
           </div>
-          <div
-            className="deleteReview"
-            onClick={() => handleDeleteReview(rev.id, rev.clienteId)}
-          >
-            <Trash2 color="red" />
-          </div>
+          {rev.clienteId === usuarioLogadoId && (
+            <div
+              className="deleteReview"
+              onClick={() => handleDeleteReview(rev.id, rev.clienteId)}
+            >
+              <Trash2 color="red" />
+            </div>
+          )}
         </div>
       ))}
 

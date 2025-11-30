@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // Icons
-import { Star } from "lucide-react";
+import { Mail, Star } from "lucide-react";
 import { GetSingleProductUnic } from "../../../Services/Services_Ecommerce/Get/singleProduct";
 import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import { Alert } from "../../Alert/alert";
@@ -24,6 +24,7 @@ export default function InfoProduct() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedPreco, setSelectedPreco] = useState(null);
   const [selectedQuantidade, setSelectedQuantidade] = useState(null);
+  const [selectedVariationId, setSelectedVariationId] = useState(null);
   const [openSnack, setOpenSnack] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
   const [snackSeverity, setSnackSeverity] = useState("success");
@@ -79,6 +80,8 @@ export default function InfoProduct() {
     if (variacao.estoque) {
       setSelectedQuantidade(variacao.estoque  );
     }
+
+    setSelectedVariationId(variacao.id);
   };
 
   const handleCloseSnack = (event, reason) => {
@@ -139,7 +142,7 @@ export default function InfoProduct() {
             )}
           </div>
           <div className="button-cart">
-            <ButtonCard productId={product.id} />
+            <ButtonCard variationId={selectedVariationId} />
           </div>
           <div className="Services">
             <ServicesTheProduct />
@@ -185,14 +188,15 @@ export default function InfoProduct() {
                 <AvaliationProduct produtoId={id} />
               </div>
               <div>
-                <ShowReviewsProduct productId={id}/>
+                <ShowReviewsProduct productId={id} />
               </div>
             </div>
           )}
           {detalies === "suport" && (
             <div>
-              <h2>Suportet</h2>
-              <p>Here you will find warranty and support info.</p>
+              <h2>Suporte</h2>
+              <Mail color="#bebebe" />
+              <p>Flow@FlowBuy.com</p>
             </div>
           )}
         </div>

@@ -3,26 +3,43 @@ import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import "./style.css";
 import { Alert } from "../../Alert/alert";
 import { useNavigate } from "react-router-dom";
-// import { useState } from "react";
+import { AddProductToCart } from "../../../Services/Services_Ecommerce/Post/postAddProductCart";
+import { useState } from "react";
 
 // state
 
-export default function ButtonCard({ productId }) {
+export default function ButtonCard({ variationId }) {
   // const [openSnack, setOpenSnack] = useState(false);
   // const [snackMessage, setSnackMessage] = useState("");
   // const [snackSeverity, setSnackSeverity] = useState("success");
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
 
-  const heandleCheckUser = () => {
-    const user = sessionStorage.getItem("Buyer");
+  const heandleAddProductCart = async() => {
+    setLoading(true);
+    try{
+      const user = JSON.parse(sessionStorage.getItem("Buyer"));
+      const clientId = Number(user?.clienteId);
+      
+      const body = {
+        usuarioId: clientId,
+        variacaoId: variationId,
+        quantidade: 1,
+      };
 
-    if (!user) {
-      console.log(`O produto ${productId} não foi adicionado ao carrinho`);
-      navigate("/login")
-      return
+      const cartProduct = await AddProductToCart(body)
+      if(cartProduct){
+        navigate("/Buyer/ShoppingCart");
+      }
+      if (!user) {
+        console.log(`O produto ${variationId} não foi adicionado ao carrinho`);
+        navigate("/login")
+        return
+      }
+    }catch(err){
+      console.log(err, "Erro ao adicionar produto ao carrinho")
     }
-
+    setLoading(false);
   };
 
   // const handleCloseSnack = (event, reason) => {
@@ -32,7 +49,9 @@ export default function ButtonCard({ productId }) {
 
   return (
     <>
-      <button className="car-product" onClick={heandleCheckUser}>Adicionar ao Carrinho</button>
+      <button className="car-product" onClick={heandleAddProductCart}>
+        Adicionar ao Carrinho
+      </button>
 
       {/* <Snackbar
         open={openSnack}
@@ -48,7 +67,7 @@ export default function ButtonCard({ productId }) {
         </Alert>
       </Snackbar> */}
 
-      {/* <Backdrop
+      <Backdrop
         open={loading}
         sx={{
           color: "#fff",
@@ -60,9 +79,9 @@ export default function ButtonCard({ productId }) {
       >
         <CircularProgress color="success" />
         <p style={{ fontSize: "1.2rem", color: "#fff", fontWeight: "Bold" }}>
-          Carregando Produto...
+          Adicionando ao carrinho...
         </p>
-      </Backdrop> */}
+      </Backdrop>
     </>
   );
 }

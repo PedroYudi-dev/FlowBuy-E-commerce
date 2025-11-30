@@ -178,7 +178,7 @@ export default function NavBar(){
 
         <div id="car-buy">
           <Tooltip text="Carrinho">
-            <Link to="ShoppingCart">
+            <Link to="/Buyer/ShoppingCart">
               <ShoppingCart color="#fff" className="icon-cart" />
             </Link>
           </Tooltip>

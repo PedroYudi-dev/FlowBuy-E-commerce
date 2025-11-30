@@ -66,10 +66,6 @@ const router = createBrowserRouter([
         path: "Brand/:marca",
         element: <Brands />,
       },
-      {
-        path: "ShoppingCart",
-        element: <CartProduct />,
-      },
     ],
   },
   {
