@@ -22,6 +22,7 @@ import ProductsSeller from './Templates/Seller/ProductsSeller/index.jsx'
 import EditProductSingle from "./Templates/Seller/EditProduct/index.jsx";
 import Brands from './components/Category/Brands/index.jsx'
 import CartProduct from './router/Cart/index.jsx'
+import Dashboard from './Templates/Seller/ComponentsSeller/Dashboard/index.jsx'
 
 // Aqui colocamos a estrutura do "APP" nas rotas. APP = PAI FILHOS = ROTAS
 const router = createBrowserRouter([
@@ -121,6 +122,10 @@ const router = createBrowserRouter([
       {
         path: "ProductsSeller/EditProduct/:id",
         element: <EditProductSingle />,
+      },
+      {
+        path: "SalesDashboard",
+        element: <Dashboard />,
       },
     ],
   },

@@ -1,0 +1,109 @@
+.dashboard-container {
+  padding: 30px;
+  background: #f5f7fb;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.dashboard-subtitle {
+  color: #777;
+  margin-top: -5px;
+}
+
+/* CARDS SUPERIORES */
+.cards-top {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.dash-card {
+  border-radius: 14px !important;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.card-icon {
+  background: #e7edff !important;
+  color: #0035ff !important;
+  padding: 12px;
+}
+
+.card-label {
+  font-size: 14px;
+  color: #777;
+}
+
+.card-value {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.card-positive {
+  color: #00b050;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-negative {
+  color: #d60000;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* GRÁFICOS */
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.chart-card {
+  border-radius: 14px !important;
+}
+
+/* TABELA */
+.table-orders {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table-orders th {
+  text-align: left;
+  padding-bottom: 10px;
+  color: #444;
+}
+
+.table-orders td {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.status-concluído {
+  background: #d5f7da !important;
+  color: #007f23 !important;
+}
+
+.status-processando {
+  background: #fff7c7 !important;
+  color: #aa8f00 !important;
+}
+
+.status-enviado {
+  background: #d9e7ff !important;
+  color: #0035ff !important;
+}

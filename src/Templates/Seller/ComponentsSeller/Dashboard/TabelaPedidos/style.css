@@ -1,0 +1,29 @@
+.tabela-pedidos-card {
+  border-radius: 12px;
+  padding: 18px;
+  background: #fff;
+  margin-top: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.tabela-pedidos-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.tabela-status {
+  font-weight: bold;
+}
+
+.tabela-status-concluido {
+  color: #2e7d32;
+}
+
+.tabela-status-processando {
+  color: #1976d2;
+}
+
+.tabela-status-cancelado {
+  color: #d32f2f;
+}

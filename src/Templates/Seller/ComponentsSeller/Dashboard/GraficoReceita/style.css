@@ -1,0 +1,18 @@
+.grafico-receita-card {
+  border-radius: 12px;
+  padding: 18px;
+  background: #fff;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.grafico-receita-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.grafico-receita-wrapper {
+  width: 100%;
+  height: 280px;
+}

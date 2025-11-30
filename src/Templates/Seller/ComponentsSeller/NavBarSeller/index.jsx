@@ -43,7 +43,7 @@ export default function NavBarSeller() {
           </Link>
         </div>
         <div className="attributes">
-          <Link>
+          <Link to="SalesDashboard">
             <ChartColumn color="#fff" className="icon-Products" />
             <p>Vendas</p>
           </Link>
@@ -55,7 +55,7 @@ export default function NavBarSeller() {
           </Link>
         </div>
       </div>
-      
+
       <div id="PanelSeller">
         <div className="PanelAttributes">
           <Store color="#fff" />
@@ -72,7 +72,7 @@ export default function NavBarSeller() {
               <p>
                 Faça o seu Login{" "}
                 <Link to="/Login">
-                  <p style={{fontWeight: "bold"}}>Clique Aqui</p>
+                  <p style={{ fontWeight: "bold" }}>Clique Aqui</p>
                 </Link>
               </p>
             </>

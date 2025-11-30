@@ -1,0 +1,68 @@
+/* ======= CONTÊINER PRINCIPAL DO DASHBOARD ======= */
+.dashboard-container {
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: #f5f6fa;
+}
+
+/* ======= GRID DOS CARDS (CardResumo) ======= */
+.dashboard-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ======= ÁREA DOS GRÁFICOS ======= */
+.dashboard-charts {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .dashboard-charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======= SEÇÃO DA TABELA ======= */
+.dashboard-table-section {
+  width: 100%;
+  padding: 24px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+/* ======= TÍTULOS DAS SEÇÕES ======= */
+.dashboard-section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1e1e2f;
+}
+
+/* ======= ESPAÇAMENTO DE COMPONENTES INDIVIDUAIS ======= */
+.dashboard-card-wrapper,
+.dashboard-chart-wrapper {
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  transition: 0.2s ease-in-out;
+}
+
+.dashboard-card-wrapper:hover,
+.dashboard-chart-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* ======= ESTILO GERAL ======= */
+.text-muted {
+  color: #7b7b8a;
+}
