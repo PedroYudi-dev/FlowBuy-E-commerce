@@ -15,11 +15,8 @@ import { Alert } from "../../components/Alert/alert";
 
 export default function LoginBuyer() {
   const [nameBuyer, setNameBuyer] = useState("");
-  const [nameBuyerError, setNameBuyerError] = useState("");
   const [cpfBuyer, setCpfBuyer] = useState("");
-  const [cpfBuyerError, setCnpjBuyerError] = useState("");
   const [emailBuyer, setEmailBuyer] = useState("");
-  const [emailBuyerError, setEmailByuerError] = useState("");
   const [passwordBuyer, setPasswordBuyer] = useState("");
   const [openSnack, setOpenSnack] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -73,20 +70,8 @@ export default function LoginBuyer() {
   const handleValidationLoginNameBuyuer = (e) => {
     const nameLoginValue = String(e.target.value);
 
-    if (!nameLoginValue.trim()) {
-      setNameBuyerError("O nome é Obrgatório");
-    } else if (nameLoginValue.length <= 3) {
-      setNameBuyerError("O nome deve conter pelo menos 3 caracteres!");
-    } else if (nameLoginValue.length >= 100) {
-      setNameBuyerError(
-        "O nome deve conter pelo menos no maximo 100 caracteres!"
-      );
-    } else if (!/^[a-zA-Z0-9\s\-()]+$/.test(nameLoginValue)) {
-      setNameBuyerError("O nome contém caracteres inválidos.");
-    } else {
-      setNameBuyerError("");
-    }
-    setNameBuyer(e.target.value);
+    
+    setNameBuyer(nameLoginValue);
   };
 
   const handleValidationLoginCPF = (e) => {
@@ -94,28 +79,12 @@ export default function LoginBuyer() {
 
     setCpfBuyer(CpfLoginValue);
 
-    if (!CpfLoginValue.trim()) {
-      setCnpjBuyerError("O CPF é Obrgatório");
-    } else if (CpfLoginValue.length != 11) {
-      setCnpjBuyerError("O CPF deve conter exatamente 11 dígitos!");
-    } else if (!/^[0-9]+$/.test(CpfLoginValue)) {
-      setCnpjBuyerError("O CPF deve conter apenas números!");
-    } else {
-      setCnpjBuyerError("");
-    }
   };
 
   const handleValidationLoginEmailBuyer = (e) => {
     const EmailLoginValue = String(e.target.value);
 
-    if (!EmailLoginValue.trim()) {
-      setEmailByuerError("O Email é Obrgatório");
-    } else if (EmailLoginValue.length <= 3) {
-      setEmailByuerError("O Email deve conter pelo menos 3 caracteres!");
-    } else {
-      setEmailByuerError("");
-    }
-    setEmailBuyer(e.target.value);
+    setEmailBuyer(EmailLoginValue);
   };
 
   const handleCloseSnack = (event, reason) => {
@@ -146,7 +115,6 @@ export default function LoginBuyer() {
               onChange={handleValidationLoginNameBuyuer}
             />
             <User className="icon" />
-            {nameBuyer && <p style={{ color: "red" }}>{nameBuyerError}</p>}
           </div>
           <div className="form-control-buyer">
             <input
@@ -158,7 +126,6 @@ export default function LoginBuyer() {
               onChange={handleValidationLoginCPF}
             />
             <User className="icon" />
-            {cpfBuyer && <p style={{ color: "red" }}>{cpfBuyerError}</p>}
           </div>
           <div className="form-control-buyer">
             <input
@@ -169,7 +136,6 @@ export default function LoginBuyer() {
               onChange={handleValidationLoginEmailBuyer}
             />
             <Mail className="icon" />
-            {emailBuyer && <p style={{ color: "red" }}>{emailBuyerError}</p>}
           </div>
           <div className="form-control-buyer">
             <input

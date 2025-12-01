@@ -52,9 +52,7 @@ export default function BasicInformation({ onCreateBasicInfo, reset }) {
       setDescriptionError("A descrição do produto é obrigatória.");
     } else if (nameDescripition.length <= 5) {
       setDescriptionError("A descrição deve ter pelo menos 10 caracteres.");
-    } else if (nameDescripition.length >= 200) {
-      setDescriptionError("A descrição não pode ter mais de 200 caracteres.");
-    } else if (/<[^>]*>/.test(nameDescripition)) {
+    }else if (/<[^>]*>/.test(nameDescripition)) {
       setDescriptionError("O nome contém caracteres inválidos.");
     } else {
       setDescriptionError("");

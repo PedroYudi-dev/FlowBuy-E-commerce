@@ -30,32 +30,32 @@ export default function CarouselImg(){
         >
           <SwiperSlide>
             <div className="slide">
-              <img src="/Images/Banner Fone de ouvido-2.png" alt="" />
+              <img src="/Images/Xiaomi 15.png" alt="" />
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="slide">
-              <img src="/Images/Banner oferta de Iphone 13 - 2.png" alt="" />
+              <img src="/Images/Banner oferta de smartphone moderno linha azul e branco...png" alt="" />
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="slide">
-              <img src="/Images/Banner Galaxy Z.png" alt="" />
+              <img src="/Images/poco x7 pro..png" alt="" />
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="slide">
-              <img src="/Images/Iphone 17.png" alt="" />
+              <img src="/Images/S25..png" alt="" />
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="slide">
-              <span>Slide 5</span>
+              <img src="/Images/iphone 17 Pro.png" alt="" />
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="slide">
-              <span>Slide 6</span>
+              <img src="/Images/Huawei Pura 80 Ultra.png" alt="" />
             </div>
           </SwiperSlide>
         </Swiper>

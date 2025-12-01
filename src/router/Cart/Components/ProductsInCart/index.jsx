@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { GetProductInCart } from "../../../../Services/Services_Ecommerce/Get/GetProductInCart";
 import { UpdateProductCart } from "../../../../Services/Services_Ecommerce/Post/UpdateProductInCart";
 import { DeleteProductCart } from "../../../../Services/Services_Ecommerce/Delete/DeleteProductInCart";
-import { Backdrop, CircularProgress } from "@mui/material";
+import { Backdrop, CircularProgress, Modal } from "@mui/material";
+import ModalCart from "../../../../components/ModalCart";
 
 export default function SelectionProductsInCart() {
   const user = JSON.parse(sessionStorage.getItem("Buyer"));
@@ -17,7 +18,10 @@ export default function SelectionProductsInCart() {
       setLoading(true);
       try{
         const data = await GetProductInCart(clientId);
-      setCart(data);
+      setCart({
+        itens: data?.itens || [],
+        total: data?.total || 0,
+      });
       }catch(err){
         console.error("Erro ao carregar o carrinho:", err);
       }
@@ -130,9 +134,15 @@ export default function SelectionProductsInCart() {
         </div>
       ))}
 
-      <div className="cartTotal">
-        <h2>Total do Pedido: R$ {cart.total.toFixed(2)}</h2>
-      </div>
+      
+      {cart.itens.length > 0 && (
+        <>
+        <div className="cartTotal">
+          <h2>Total do Pedido: R$ {cart.total.toFixed(2)}</h2>
+        </div>
+        <ModalCart />
+        </>
+        )}
       <Backdrop
         open={loading}
         sx={{

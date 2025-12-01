@@ -9,7 +9,7 @@ import { SquarePen, Star, Trash2 } from "lucide-react";
 
 // UseState
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import { Alert } from "../../../../components/Alert/alert";
 
@@ -17,7 +17,7 @@ export default function SelectionProductsSeller() {
   const sellerData = JSON.parse(sessionStorage.getItem("Seller"));
   const fornecedorId = sellerData?.fornecedorId || sellerData?.FornecedorId;
   const [produto, setProduto] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate()
   const [openSnack, setOpenSnack] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
   const [snackSeverity, setSnackSeverity] = useState("success");
@@ -83,13 +83,6 @@ export default function SelectionProductsSeller() {
               <p style={{ fontSize: "1rem", color: "#6d6d6dff" }}>
                 Quantidade:{product.estoqueTotal}
               </p>
-              <div className="stars">
-                <Star color="#f7eb0cff" className="starSeller" />
-                <Star color="#f7eb0cff" className="starSeller" />
-                <Star color="#f7eb0cff" className="starSeller" />
-                <Star color="#f7eb0cff" className="starSeller" />
-                <Star color="#f7eb0cff" className="starSeller" />
-              </div>
               <p>
                 {product.preco &&
                   parseFloat(
@@ -102,7 +95,7 @@ export default function SelectionProductsSeller() {
             </div>
             <div className="ButtonsProduct">
               <div className="button-buySeller">
-                <button
+                {/* <button
                   type="submit"
                   className="buy-productSeller"
                   onClick={() => {
@@ -110,7 +103,7 @@ export default function SelectionProductsSeller() {
                   }}
                 >
                   <SquarePen color="#0c0c0cff" />
-                </button>
+                </button> */}
               </div>
               <div className="DeleteProduct">
                 <button onClick={() => handleDeleteProduct(product.id)}>
