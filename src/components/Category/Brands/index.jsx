@@ -63,7 +63,7 @@ export default function Brands() {
                     Marca: {product.marca}
                   </label>
                   <p style={{ fontSize: "1rem", color: "#6d6d6dff" }}>
-                    Quantidade:{product.estoqueTotal}
+                    {/* Quantidade:{product.estoqueTotal} */}
                   </p>
                   <div className="stars">
                     <Star color="#f7eb0cff" className="star" />

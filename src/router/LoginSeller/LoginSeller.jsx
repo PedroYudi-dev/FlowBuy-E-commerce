@@ -14,11 +14,8 @@ import { Alert } from "../../components/Alert/alert";
 
 export default function LoginSell() {
   const [name, setName] = useState("");
-  const [nameError, setNameError] = useState("");
   const [cnpj, setCnpj] = useState("");
-  const [cnpjError, setCnpjError] = useState("");
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [openSnack, setOpenSnack] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -67,22 +64,8 @@ export default function LoginSell() {
   //  VALIDAÇÕES DOS INPUTS
   const handleValidationLoginName = (e) => {
     const nameLoginValue = String(e.target.value);
-    const errors = [];
+    
 
-    if (!nameLoginValue.trim()) {
-      errors.push("O nome é obrigatório!");
-    }
-    if (nameLoginValue.length < 3) {
-      errors.push("O nome deve conter pelo menos 3 caracteres!");
-    }
-    if (nameLoginValue.length > 100) {
-      errors.push("O nome deve conter no máximo 100 caracteres!");
-    }
-    if (!/^[a-zA-Z0-9\s\-()]+$/.test(nameLoginValue)) {
-      errors.push("O nome contém caracteres inválidos.");
-    }
-
-    setNameError(errors);
     setName(nameLoginValue);
   };
 
@@ -91,27 +74,12 @@ export default function LoginSell() {
 
     setCnpj(CnpjLoginValue);
 
-    if (!CnpjLoginValue.trim()) {
-      setCnpjError("O Cnpj é Obrgatório");
-    } else if (CnpjLoginValue.length != 14) {
-      setCnpjError("O CNPJ deve conter exatamente 14 dígitos!");
-    } else if (!/^[0-9]+$/.test(CnpjLoginValue)) {
-      setCnpjError("O CNPJ deve conter apenas números!");
-    } else {
-      setCnpjError("");
-    }
+   
   };
 
   const handleValidationLoginEmail = (e) => {
     const EmailLoginValue = String(e.target.value);
 
-    if (!EmailLoginValue.trim()) {
-      setEmailError("O Email é Obrgatório");
-    } else if (EmailLoginValue.length <= 3) {
-      setEmailError("O Email deve conter pelo menos 3 caracteres!");
-    } else {
-      setEmailError("");
-    }
     setEmail(e.target.value);
   };
 
@@ -137,13 +105,10 @@ export default function LoginSell() {
             <input
               type="name"
               id="name"
-              placeholder={nameError ? nameError : "Digite o seu Nome..."}
+              placeholder={ "Digite o seu Nome..."}
               value={name}
               onChange={handleValidationLoginName}
-              style={{
-                borderColor: nameError ? "red" : "#423524",
-                color: nameError ? "red" : "#333",
-              }}
+              
             />
             <User className="icon" />
           </div>
@@ -157,7 +122,6 @@ export default function LoginSell() {
               onChange={handleValidationLoginCNPJ}
             />
             <User className="icon" />
-            {cnpj && <p style={{ color: "red" }}>{cnpjError}</p>}
           </div>
           <div className="form-control-seller">
             <input
@@ -168,7 +132,6 @@ export default function LoginSell() {
               onChange={handleValidationLoginEmail}
             />
             <Mail className="icon" />
-            {email && <p style={{ color: "red" }}>{emailError}</p>}
           </div>
           <div className="form-control-seller">
             <input

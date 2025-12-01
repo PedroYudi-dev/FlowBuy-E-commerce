@@ -16,6 +16,7 @@ import { GetSingleProductUnic } from "../../../Services/Services_Ecommerce/Get/s
 import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import { Alert } from "../../Alert/alert";
 import ShowReviewsProduct from "../Avation/ShowReviews";
+import { GetReviews } from "../../../Services/Services_Ecommerce/Get/GetReviewsProducts";
 
 export default function InfoProduct() {
   const { id } = useParams();
@@ -29,6 +30,11 @@ export default function InfoProduct() {
   const [snackMessage, setSnackMessage] = useState("");
   const [snackSeverity, setSnackSeverity] = useState("success");
   const [loading, setLoading] = useState(false);
+  const [averageRating, setAverageRating] = useState(0);
+  const [reviewsCount, setReviewsCount] = useState(0);
+
+
+
   // Puxando o produto pelo Id
   useEffect(() => {
     const singleProduct = async () => {
@@ -51,6 +57,30 @@ export default function InfoProduct() {
     };
     singleProduct();
   }, [id]);
+
+  
+useEffect(() => {
+  async function loadReviews() {
+    const data = await GetReviews(id);
+
+    if (!Array.isArray(data)) {
+      console.error("Erro: GetReviews não retornou array", data);
+      setAverageRating(0);
+      setReviewsCount(0);
+      return;
+    }
+
+    const media =
+      data.length > 0
+        ? data.reduce((sum, r) => sum + Number(r.nota || 0), 0) / data.length
+        : 0;
+
+    setAverageRating(media);
+    setReviewsCount(data.length);
+  }
+
+  loadReviews();
+}, [id]);
 
   // Calcula o preço atual considerando variação ou preço principal
   const currentPrice = parseFloat(
@@ -89,6 +119,10 @@ export default function InfoProduct() {
     setOpenSnack(false);
   };
 
+  const handleAverageUpdate = (media, count) => {
+    setAverageRating(media);
+    setReviewsCount(count);
+  };
   return (
     <div id="container">
       <div id="detalhe-container">
@@ -114,14 +148,18 @@ export default function InfoProduct() {
                 ? `Estoque total: ${product.estoqueTotal ?? 0}`
                 : `Estoque: ${selectedQuantidade}`}
             </p>
-            {/* <div>
-              <AvaliationProduct produtoId={id}/>
-              </div> */}
-            <Star color="yellow" />
-            <Star color="yellow" />
-            <Star color="yellow" />
-            <Star color="yellow" />
-            <Star color="yellow" />
+            <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star
+                  key={i}
+                  color={i < Math.round(averageRating) ? "#FFD700" : "#ccc"}
+                />
+              ))}
+
+              <span style={{ marginLeft: 8, color: "#555" }}>
+                {averageRating.toFixed(1)} ({reviewsCount} avaliações)
+              </span>
+            </div>
             <p>{formattedPrice}</p>
             <p
               style={{
@@ -188,7 +226,10 @@ export default function InfoProduct() {
                 <AvaliationProduct produtoId={id} />
               </div>
               <div>
-                <ShowReviewsProduct productId={id} />
+                <ShowReviewsProduct
+                  productId={id}
+                  onAverageChange={handleAverageUpdate}
+                />
               </div>
             </div>
           )}

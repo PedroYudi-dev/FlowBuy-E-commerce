@@ -6,7 +6,7 @@ import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import { DeleteReviews } from "../../../../Services/Services_Ecommerce/Delete/DeleteReviewsProduct";
 import { Alert } from "../../../Alert/alert";
 
-export default function ShowReviewsProduct({ productId }) {
+export default function ShowReviewsProduct({ productId, onAverageChange }) {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
@@ -17,19 +17,28 @@ export default function ShowReviewsProduct({ productId }) {
   const usuarioLogado = JSON.parse(sessionStorage.getItem("Buyer"));
   const usuarioLogadoId = Number(usuarioLogado?.clienteId);
 
-
   const viewReview = async () => {
     setLoading(true);
     try {
       const dataReview = await GetReviews(productId);
       setReviews(dataReview);
+
+      // Calcular e mandar média para o pai
+      if (onAverageChange) {
+        const media =
+          dataReview.length > 0
+            ? dataReview.reduce((sum, r) => sum + r.nota, 0) / dataReview.length
+            : 0;
+
+        onAverageChange(media);
+      }
     } catch (err) {
       console.error("Erro ao buscar reviews:", err);
     } finally {
       setLoading(false);
     }
   };
-
+  
   useEffect(() => {
     viewReview();
   }, [productId]);
@@ -52,10 +61,10 @@ export default function ShowReviewsProduct({ productId }) {
     }
   };
 
-   const handleCloseSnack = (event, reason) => {
-     if (reason === "clickaway") return;
-     setOpenSnack(false);
-   };
+  const handleCloseSnack = (event, reason) => {
+    if (reason === "clickaway") return;
+    setOpenSnack(false);
+  };
 
   return (
     <div className="containerShowReviews">

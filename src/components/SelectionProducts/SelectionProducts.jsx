@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { ProductAll } from "../../Services/Services_Ecommerce/Get/GetProductAll";
 import { Backdrop, CircularProgress, Snackbar } from "@mui/material";
 import { Alert } from "../Alert/alert";
+import { GetReviews } from "../../Services/Services_Ecommerce/Get/GetReviewsProducts";
 
 export default function SelectionProducts() {
   const [produto, setProduto] = useState([]);
@@ -19,6 +20,8 @@ export default function SelectionProducts() {
   const [snackMessage, setSnackMessage] = useState("");
   const [snackSeverity, setSnackSeverity] = useState("success");
   const [loading, setLoading] = useState(false);
+  const [ratings, setRatings] = useState({});
+
 
   useEffect(() => {
     const viewProductGet = async () => {
@@ -47,6 +50,36 @@ export default function SelectionProducts() {
     setOpenSnack(false);
   };
 
+ useEffect(() => {
+   async function loadAllRatings() {
+     const results = {};
+
+     for (const p of produto) {
+       const data = await GetReviews(p.id);
+
+       if (Array.isArray(data) && data.length > 0) {
+         const media =
+           data.reduce((sum, r) => sum + Number(r.nota || 0), 0) / data.length;
+
+         results[p.id] = {
+           average: media,
+           count: data.length,
+         };
+       } else {
+         results[p.id] = { average: 0, count: 0 };
+       }
+     }
+
+     setRatings(results);
+   }
+
+   if (produto.length > 0) {
+     loadAllRatings();
+   }
+ }, [produto]);
+
+  
+
   return (
     <div id="Container-SelectionProducts">
       <div id="structure-SelectionProducts">
@@ -61,12 +94,21 @@ export default function SelectionProducts() {
               <p style={{ fontSize: "1rem", color: "#6d6d6dff" }}>
                 Quantidade:{product.estoqueTotal}
               </p>
-              <div className="stars">
-                <Star color="#f7eb0cff" className="star" />
-                <Star color="#f7eb0cff" className="star" />
-                <Star color="#f7eb0cff" className="star" />
-                <Star color="#f7eb0cff" className="star" />
-                <Star color="#f7eb0cff" className="star" />
+              <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    color={
+                      i < Math.round(ratings[product.id]?.average || 0)
+                        ? "#FFD700"
+                        : "#ccc"
+                    }
+                  />
+                ))}
+
+                <span style={{ marginLeft: 8, fontSize:"1.2rem", color: "#555" }}>
+                {(ratings[product.id]?.average || 0).toFixed(1)} 
+              </span>
               </div>
               <p>
                 {product.preco &&
